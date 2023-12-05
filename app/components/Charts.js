@@ -91,20 +91,20 @@ const Charts = () => {
   }, []);
 
   return (
-    <div className="py-6 flex flex-col md:flex-row md:space-x-6">
-      <Card className="w-96 rounded-md">
+    <div className="py-6 flex flex-col md:flex-row gap-6 md:justify-between ">
+      <Card className="w-full rounded-md">
         <div className="p-4">
           <h5 className="font-semibold text-lg text-gray-700 mb-4">Completed Appointments</h5>
           <canvas ref={lineChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
-      <Card className="w-96 rounded-md">
+      <Card className="w-full rounded-md">
         <div className="p-4">
           <h5 className="font-semibold text-lg text-gray-700 mb-4">Cancellations</h5>
           <canvas ref={barChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
-      <Card className="w-96 rounded-md">
+      <Card className="w-full rounded-md">
         <div className="p-4">
           <h5 className="font-semibold text-lg text-gray-700 mb-4">Total Patients: 132</h5>
           <canvas ref={doughnutChartRef} width="100" height="90"></canvas>
