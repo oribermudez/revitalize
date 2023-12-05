@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useState } from "react";
+import { useAppState } from '../global-state/AppStateContext';
 import { PencilIcon, PlusIcon } from "@heroicons/react/24/outline";
 import {
   Card,
@@ -20,90 +21,9 @@ import NewAppointment from "./NewAppointment";
 
 const TABLE_HEAD = ["Client", "Service", "Status", "Date", ""];
  
-const TABLE_ROWS = [
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg",
-    name: "John Michael",
-    service: "Deep Tissue Massage",
-    time: "60 min",
-    active: true,
-    date: "09/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg",
-    name: "Alexa Liras",
-    service: "Hot Stone Massage",
-    time: "60 min",
-    active: true,
-    date: "10/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg",
-    name: "Laurent Perrier",
-    service: "Relaxation Massage",
-    time: "90 min",
-    active: true,
-    date: "10/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg",
-    name: "Michael Levi",
-    service: "Deep Tissue Massage",
-    time: "60 min",
-    active: true,
-    date: "12/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg",
-    name: "Richard Gran",
-    service: "Relaxation Massage",
-    time: "60 min",
-    active: false,
-    date: "15/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg",
-    name: "Ryan Michael",
-    service: "Deep Tissue Massage",
-    time: "60 min",
-    active: true,
-    date: "09/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-2.jpg",
-    name: "Samantha Liras",
-    service: "Hot Stone Massage",
-    time: "60 min",
-    active: true,
-    date: "10/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-1.jpg",
-    name: "Gillian Perrier",
-    service: "Relaxation Massage",
-    time: "90 min",
-    active: true,
-    date: "10/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-4.jpg",
-    name: "Aaron Levi",
-    service: "Deep Tissue Massage",
-    time: "60 min",
-    active: true,
-    date: "12/12/23",
-  },
-  {
-    img: "https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-5.jpg",
-    name: "Sebastian Gran",
-    service: "Relaxation Massage",
-    time: "60 min",
-    active: false,
-    date: "15/12/23",
-  },
-];
- 
 const RecentAppointments = () => {
+  const { state } = useAppState();
+  const { appointments } = state;
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -150,9 +70,9 @@ const RecentAppointments = () => {
               </tr>
             </thead>
             <tbody>
-              {TABLE_ROWS.map(
+              {appointments.map(
                 ({ img, name, service, time, active, date }, index) => {
-                  const isLast = index === TABLE_ROWS.length - 1;
+                  const isLast = index === appointments.length - 1;
                   const classes = isLast
                     ? "p-4"
                     : "p-4 border-b border-blue-gray-50";

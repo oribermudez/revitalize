@@ -1,6 +1,6 @@
 "use client"
 
-import { useAppState, AppStateProvider } from '../../global-state/AppStateContext';
+import { AppStateProvider } from '../../global-state/AppStateContext';
 import MyCalendar from "@/app/components/MyCalendar";
 
 const Schedule = () => {
