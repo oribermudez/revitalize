@@ -10,6 +10,10 @@ const Login = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleClick = () => {
+    router.push("/dashboard");
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-1">
       <div className="md:min-h-screen flex items-center bg-cover pr-20 bg-relax text-gray-900 justify-end">
@@ -57,6 +61,7 @@ const Login = () => {
 
               <button
                 className="mt-12 bg-[#779790] text-white font-semibold px-4 py-2 rounded hover:bg-[#77aba0] w-full flex gap-4 justify-center items-center"
+                onClick={handleClick}
               >
                 Sign In
               </button>
