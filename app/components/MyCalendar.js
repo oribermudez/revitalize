@@ -2,26 +2,11 @@ import React from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useAppState } from '../global-state/AppStateContext';
 
 const localizer = momentLocalizer(moment);
 
-const events = [
-  {
-    title: 'Relaxing Massage',
-    start: new Date(2023, 11, 1, 10, 0),
-    end: new Date(2023, 11, 1, 12, 0),
-    person: 'John Doe',
-  },
-  {
-    title: 'Hot Stone Massage',
-    start: new Date(2023, 11, 5, 14, 0),
-    end: new Date(2023, 11, 5, 16, 0),
-    person: 'Jane Smith',
-  },
-  // Add more events as needed
-];
-
-const eventStyleGetter = (event, start, end, isSelected) => {
+const eventStyleGetter = () => {
 
   const style = {
     backgroundColor: '#77aba0',
@@ -38,16 +23,20 @@ const eventStyleGetter = (event, start, end, isSelected) => {
 };
 
 const MyCalendar = () => {
+  const { state } = useAppState();
+  const { appointments: events } = state;
+
   const CustomEvent = ({ event }) => (
     <div className='text-sm'>
-      <div>{event.title}</div>
-      <div>{event.person}</div>
+      <div>{event.service}</div>
+      <div>{event.name} - {event.duration}</div>
+      <div></div>
     </div>
   );
 
   return (
     <div style={{ height: '500px' }} className='mt-6 bg-white rounded-md'>
-      <Calendar
+      {events?.length && <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
@@ -57,7 +46,7 @@ const MyCalendar = () => {
         components={{
           event: CustomEvent,
         }}
-      />
+      />}
     </div>
   );
 };
