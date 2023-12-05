@@ -1,14 +1,18 @@
 "use client"
 
-// NewAppointment.js
 import React, { useState } from 'react';
 import { Button, Card, CardBody, CardFooter, Input, Select, Option, Typography } from '@material-tailwind/react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useAppState } from '../global-state/AppStateContext';
+import { ADD_APPOINTMENT, addAppointment } from '../global-state/actions';
+import dayjs from 'dayjs';
 
 const services = ['Deep Tissue', 'Hot Stone', 'Relaxing', 'Facial', 'Aromatherapy'];
 
 const NewAppointment = ({ onClose }) => {
+  const { dispatch } = useAppState();
+
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [selectedService, setSelectedService] = useState('');
@@ -17,8 +21,21 @@ const NewAppointment = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', { name, lastName, selectedService, selectedDate, selectedDuration });
+    
+    const newAppointment = {
+      id: `appointment-${Math.floor(Math.random() * 1000)}`,
+      img: "/assets/team-1.jpg",
+      name: `${name} ${lastName}`,
+      service: selectedService,
+      active: true,
+      date: dayjs(selectedDate).format('DD/MM/YY'),
+      duration: selectedDuration,
+      start: selectedDate,
+      end: selectedDate,
+    };
+
+    dispatch(addAppointment({ type: ADD_APPOINTMENT, payload: newAppointment }));
+
     onClose();
   };
 

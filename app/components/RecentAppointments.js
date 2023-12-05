@@ -23,7 +23,6 @@ const TABLE_HEAD = ["Client", "Service", "Status", "Date", ""];
  
 const RecentAppointments = () => {
   const { state } = useAppState();
-  const { appointments } = state;
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -70,9 +69,9 @@ const RecentAppointments = () => {
               </tr>
             </thead>
             <tbody>
-              {appointments.map(
-                ({ img, name, service, time, active, date }, index) => {
-                  const isLast = index === appointments.length - 1;
+              {state?.appointments?.length && state.appointments.map(
+                ({ img, name, service, duration, active, date }, index) => {
+                  const isLast = index === state.appointments.length - 1;
                   const classes = isLast
                     ? "p-4"
                     : "p-4 border-b border-blue-gray-50";
@@ -107,7 +106,7 @@ const RecentAppointments = () => {
                             color="blue-gray"
                             className="font-normal opacity-70"
                           >
-                            {time}
+                            {duration} mins
                           </Typography>
                         </div>
                       </td>
