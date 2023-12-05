@@ -126,7 +126,7 @@ const RecentAppointments = () => {
                       </td>
                       <td className={classes}>
                         <Tooltip content="Edit User" className="py-2 px-3">
-                          <IconButton variant="text">
+                          <IconButton variant="text" className="flex items-center">
                             <PencilIcon className="h-4 w-4" />
                           </IconButton>
                         </Tooltip>
