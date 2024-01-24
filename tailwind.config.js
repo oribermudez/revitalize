@@ -12,11 +12,11 @@ module.exports = {
         'relax': "url('/assets/relax.jpg')",
       },
       colors: {
-        'main': '#A1BCB7', // light green
+        'main': '#77aba0', //medium green
+        'secondary': '#A1BCB7', // light green 
         'accent': '#2D4635', // dark green
-        'secondary': '#779790', //medium green
         'black': '#000000', // all clickable text
-        'grey': '#4B4B4B', // all non-clickable text
+        'lightgrey': '#d1d5db', // all non-clickable text
       },
 
   plugins: [],
