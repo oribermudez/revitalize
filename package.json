@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@heroicons/react": "^2.1.1",
+=======
+    "@heroicons/react": "^2.0.18",
+>>>>>>> 87e0e54 (first card)
     "@material-tailwind/react": "^2.1.8",
     "chart.js": "^4.4.1",
     "dayjs": "^1.11.10",
