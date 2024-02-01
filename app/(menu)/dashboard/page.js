@@ -16,11 +16,6 @@ const Dashboard = () => {
     <AppStateProvider>
       <div className="col-span-4 w-full h-full p-8 mt-20">
         <h2 className="text-[#2D4635] font-bold text-xl">Dashboard</h2>
-        <div className="flex flex-wrap gap-4">
-          {cardDataArray.map((cardDataContent, index) => (
-            <DashboardCard key={index} cardData={cardDataContent} />
-          ))}
-        </div>
         <Charts />
         <RecentAppointments />
       </div>
