@@ -1,11 +1,11 @@
 import Chart from "react-apexcharts";
 import React from "react";
 
-const CustomerReview = () => {
+const PatientsVisitsChart = () => {
   const data = {
     series: [
       {
-        name: "Review",
+        name: "Number of Patients",
         data: [10, 50, 30, 90, 40, 120, 100],
       },
     ],
@@ -28,23 +28,15 @@ const CustomerReview = () => {
       },
       tooltip: {
         x: {
-          format: "dd/MM/yy HH:mm",
+          format: "numeric",
         },
       },
       grid: {
         show: false,
       },
       xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z",
-        ],
+        type: "month",
+        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
       },
       yaxis: {
         show: false,
@@ -55,10 +47,10 @@ const CustomerReview = () => {
     },
   };
   return (
-    <div className="CustomerReview">
+    <div>
       <Chart options={data.options} series={data.series} type="area" />
     </div>
   );
 };
 
-export default CustomerReview;
+export default PatientsVisitsChart;
