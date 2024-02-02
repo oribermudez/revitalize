@@ -10,12 +10,17 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "@iconscout/react-unicons": "^2.0.2",
     "@material-tailwind/react": "^2.1.8",
+    "apexcharts": "^3.45.2",
     "chart.js": "^4.4.1",
     "dayjs": "^1.11.10",
+    "framer-motion": "^11.0.3",
     "next": "^14.0.3",
     "react": "^18",
+    "react-apexcharts": "^1.4.1",
     "react-big-calendar": "^1.8.5",
+    "react-circular-progressbar": "^2.1.0",
     "react-datepicker": "^4.24.0",
     "react-dom": "^18"
   },
