@@ -10,10 +10,10 @@ import {
 } from "@material-tailwind/react";
 
 import {
-  UilFileCheckAlt,
-  UilUsersAlt,
-  UilTimesCircle,
-} from "@iconscout/react-unicons";
+  UsersIcon,
+  ClipboardDocumentListIcon,
+  XCircleIcon,
+} from "@heroicons/react/24/outline";
 
 import {
   CircularProgressbarWithChildren,
@@ -27,25 +27,25 @@ export function DashboardCard() {
       title: "Visits",
       value: 2500,
       monthlyGoal: 10000,
-      pathColor: "#6366f1",
-      backgroundColor: "#fef3c7",
-      icon: UilUsersAlt,
+      pathColor: "#ffff",
+      backgroundColor: "#058569",
+      icon: UsersIcon,
     },
     {
       title: "Total Appointments",
       value: 45,
       monthlyGoal: 100,
-      pathColor: "#f59e0b",
-      backgroundColor: "#d9f99d",
-      icon: UilFileCheckAlt,
+      pathColor: "#ffff",
+      backgroundColor: "#52ccb2",
+      icon: ClipboardDocumentListIcon,
     },
     {
       title: "Cancellations",
       value: 3,
       monthlyGoal: 10,
-      pathColor: "#3D45",
-      backgroundColor: "#fbcfe8",
-      icon: UilTimesCircle,
+      pathColor: "#ffff",
+      backgroundColor: "#77aba0",
+      icon: XCircleIcon,
     },
   ];
 
@@ -57,7 +57,7 @@ export function DashboardCard() {
             <Card
               key={index}
               variant="gradient"
-              className="md:w-1/2 lg:w-1/3 xl:w-1/4 m-4 max-w-[20rem] border-green-200 p-8 rounded-3xl  flex"
+              className="md:w-1/2 lg:w-1/3 xl:w-1/4 m-4 max-w-[20rem] shadow-2xl border-green-200 p-8 rounded-3xl  flex"
               style={{
                 height: "200px",
                 width: "350px",
@@ -68,17 +68,16 @@ export function DashboardCard() {
                 shadow={false}
                 color="transparent"
                 className="m-0  text-center flex justify-end items-end ">
-                <item.icon className="h-6 w-6 mr-2 " />
+                <item.icon className="h-6 w-6 mr-2 text-white " />
               </CardHeader>
               <CardBody className="flex justify-between p-0">
                 <div style={{ width: 90, height: 90 }}>
                   <CircularProgressbarWithChildren
                     value={item.value}
-                    text={`${Math.round(
-                      ((item.monthlyGoal - item.value) / item.monthlyGoal) * 100
-                    )}%`}
+                    text={`${item.monthlyGoal}%`}
                     styles={buildStyles({
                       pathColor: item.pathColor,
+                      textColor: "#fff",
                     })}
                   />
                 </div>

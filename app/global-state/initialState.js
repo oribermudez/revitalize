@@ -1,4 +1,5 @@
 const initialState = {
+  isSidebarOpen: true,
   appointments: [
     {
       id: "appointment-1",
