@@ -5,7 +5,7 @@ import Charts from "@/app/components/Charts";
 import { DashboardCard } from "@/app/components/DashboardCard";
 import RecentAppointments from "@/app/components/RecentAppointments";
 import PatientsVisitsChart from "@/app/components/PatientsVisitsChart";
-
+import ServicesChart from "@/app/components/ServicesChart";
 const Dashboard = () => {
   return (
     <AppStateProvider>
@@ -21,6 +21,7 @@ const Dashboard = () => {
           </div>
           <div className="col-span-1 col-end-4">
             <PatientsVisitsChart />
+            <ServicesChart />
           </div>
         </div>
       </div>

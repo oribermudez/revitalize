@@ -6,7 +6,7 @@ const PatientsVisitsChart = () => {
     series: [
       {
         name: "Number of Patients",
-        data: [10, 50, 30, 90, 40, 120, 100],
+        data: [10, 50, 30, 90, 40, 120, 100, 50, 80, 20, 60, 40],
       },
     ],
     options: {
@@ -16,7 +16,7 @@ const PatientsVisitsChart = () => {
       },
 
       fill: {
-        colors: ["#fff"],
+        colors: ["#52ccb2"],
         type: "gradient",
       },
       dataLabels: {
@@ -36,13 +36,40 @@ const PatientsVisitsChart = () => {
       },
       xaxis: {
         type: "month",
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        categories: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ],
       },
       yaxis: {
         show: false,
       },
       toolbar: {
         show: false,
+      },
+      title: {
+        text: "Patients Visits",
+        align: "center",
+        margin: 10,
+        offsetX: 0,
+        offsetY: 0,
+        floating: true,
+        style: {
+          fontSize: "14px",
+          fontWeight: "bold",
+          fontFamily: undefined,
+          color: "#263238",
+        },
       },
     },
   };

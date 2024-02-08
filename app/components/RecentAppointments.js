@@ -38,9 +38,7 @@ const RecentAppointments = () => {
       <Card className="w-full rounded-md px-6 py-3 shadow-2xl">
         <CardHeader floated={true} shadow={false} className="rounded-none">
           <div className="mb-5 flex items-center justify-between ">
-            <h1 className="text-gray-500 m-8 font-bold">
-              Today's Appointments
-            </h1>
+            <h1 className="text-gray-500 m-8 font-bold">Appointments</h1>
           </div>
         </CardHeader>
         <CardBody className="overflow-x-auto overflow-y-auto px-0 h-96 pt-0">
@@ -69,7 +67,7 @@ const RecentAppointments = () => {
                     return (
                       <tr key={name}>
                         <td className={classes}>
-                          <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-2">
                             <Avatar
                               src={img}
                               alt={name}
