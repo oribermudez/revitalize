@@ -3,7 +3,7 @@ const initialState = {
   appointments: [
     {
       id: "appointment-1",
-      img: "/assets/team-3.jpg",
+      img: "/assets/team-5.jpg",
       name: "John Michael",
       service: "Deep Tissue Massage",
       duration: "60 min",
@@ -75,7 +75,7 @@ const initialState = {
     },
     {
       id: "appointment-7",
-      img: "/assets/team-2.jpg",
+      img: "/assets/spa.jpg",
       name: "Samantha Liras",
       service: "Hot Stone Massage",
       duration: "60 min",
