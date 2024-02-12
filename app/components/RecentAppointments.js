@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { useAppState } from "../global-state/AppStateContext";
-import { PencilIcon, PlusIcon } from "@heroicons/react/24/outline";
+import {
+  CheckCircleIcon,
+  PencilIcon,
+  PlusIcon,
+  XCircleIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/24/outline";
 import {
   Card,
   CardHeader,
@@ -48,12 +54,11 @@ const RecentAppointments = () => {
         <CardHeader floated={true} shadow={false} className="rounded-none">
           <div className="mb-5 flex items-center justify-between ">
             <h1 className="text-gray-500 m-8 font-bold">Appointments</h1>
-            <Button
-              className="bg-[#779790] py-2 pr-6 pl-4 text-sm flex items-center"
+            <div
+              className=" py-2 pr-6 pl-4 text-sm flex items-center"
               onClick={openModal}>
-              <PlusIcon className="h-4 w-4 mr-2" />
-              New Appointment
-            </Button>
+              <PlusCircleIcon className="h-8 w-8 hover:stroke-black stroke-white fill-[#779790]" />
+            </div>
           </div>
         </CardHeader>
         <CardBody className="overflow-x-auto overflow-y-hidden scrollbar-hidden px-0 pt-0">
@@ -104,13 +109,12 @@ const RecentAppointments = () => {
                         </div>
                       </td>
                       <td className="p-4">
-                        <div
-                          className={`text-[10px] font-bold px-2 py-1 rounded-md ${
-                            active
-                              ? "text-green-700 bg-green-700/20"
-                              : "text-red-700 bg-red-700/20"
-                          }`}>
-                          {active ? "ACCEPTED" : "CANCELLED"}
+                        <div className={` px-2 py-1  `}>
+                          {active ? (
+                            <CheckCircleIcon className="h-6 w-6 flex items-center fill-green-200" />
+                          ) : (
+                            <XCircleIcon className="h-6 w-6 flex items-center fill-red-300" />
+                          )}
                         </div>
                       </td>
                       <td className="p-4">
