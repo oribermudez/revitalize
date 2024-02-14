@@ -19,19 +19,13 @@ import {
   UserGroupIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
-import { isSidebarOpen } from "../global-state/actions";
+import { useAppState } from "../global-state/AppStateContext";
 
 const Sidebar = () => {
+  const { state } = useAppState();
   const router = useRouter();
   const path = usePathname();
   const [activeItem, setActiveItem] = useState("Dashboard");
-
-  //state for side bar open
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  //function to toggle the sidebar
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
@@ -49,8 +43,7 @@ const Sidebar = () => {
 
   return (
     <>
-      \
-      {isSidebarOpen && (
+      {state.isSidebarOpen && (
         <Card
           className={`fixed h-screen w-full max-w-[19rem] p-4 shadow-xl shadow-blue-gray-900/5 text-[#828282] flex flex-col justify-center text-sm`}>
           <div className="text-xs ml-3 text-gray-400 mb-3 mt-20">MENU</div>

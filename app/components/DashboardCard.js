@@ -57,17 +57,17 @@ export function DashboardCard() {
             <Card
               key={index}
               variant="gradient"
-              className="md:w-1/2 lg:w-1/3 xl:w-1/4 m-4 max-w-[20rem] shadow-2xl border-green-200 p-8 rounded-3xl  flex"
+              className="md:w-1/2 lg:w-1/3 xl:w-1/4 m-4 max-w-[20rem] shadow-2xl border-green-200 px-8 rounded-3xl "
               style={{
                 height: "200px",
                 width: "350px",
                 backgroundColor: item.backgroundColor,
               }}>
               <CardHeader
-                floated={false}
+                floated={true}
                 shadow={false}
                 color="transparent"
-                className="m-0  text-center flex justify-end items-end ">
+                className="  text-center flex justify-end items-end h-12">
                 <item.icon className="h-6 w-6 mr-2 text-white " />
               </CardHeader>
               <CardBody className="flex justify-between p-0">
@@ -83,18 +83,18 @@ export function DashboardCard() {
                 </div>
                 <Typography
                   variant="h1"
-                  color="black"
-                  className=" gap-1 text-3xl font-bold text-white ">
+                  className=" gap-1 text-3xl font-bold text-white mt-6 ">
                   {item.value}
                 </Typography>
               </CardBody>
-              <CardFooter className=" p-0">
+              <CardFooter className="p-2 flex flex-row justify-between  text-white font-thin">
                 <Button
                   size="lg"
-                  className="hover:bg-gray-100 font-bold uppercase text-white shadow-transparent  w-50"
+                  className="hover:font-extrabold font-bold uppercase text-white shadow-transparent "
                   ripple={true}>
                   {item.title}
                 </Button>
+                <Typography className="gap-1">Last 24 hours</Typography>
               </CardFooter>
             </Card>
           );

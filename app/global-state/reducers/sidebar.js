@@ -1,12 +1,13 @@
 import { TOGGLE_SIDEBAR } from "../actions";
 
 const sidebarReducer = (state, action) => {
+  console.log("action", action);
+  console.log("state", state);
   switch (action.type) {
     case TOGGLE_SIDEBAR:
-      console.log("state", state);
       return {
         ...state,
-        isSidebarOpen: !isSidebarOpen,
+        test: !state.isSidebarOpen,
       };
     default:
       return state;
