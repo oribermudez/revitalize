@@ -20,7 +20,7 @@ const Dashboard = () => {
             <PatientsVisitsChart />
           </div>
 
-          <div className="flex flex-grow justify-center items-center">
+          <div className="flex flex-grow justify-center">
             <ServicesChart />
           </div>
           <div className="col-span-3 ">

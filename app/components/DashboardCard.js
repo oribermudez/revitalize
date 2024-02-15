@@ -13,6 +13,8 @@ import {
   UsersIcon,
   ClipboardDocumentListIcon,
   XCircleIcon,
+  ArchiveBoxXMarkIcon,
+  BanknotesIcon,
 } from "@heroicons/react/24/outline";
 
 import {
@@ -45,15 +47,15 @@ export function DashboardCard() {
       monthlyGoal: 10,
       pathColor: "#ffff",
       backgroundColor: "bg-emerald-200",
-      icon: XCircleIcon,
+      icon: ArchiveBoxXMarkIcon,
     },
     {
       title: "Sales",
       value: 3,
       monthlyGoal: 10,
       pathColor: "#ffff",
-      backgroundColor: "bg-lime-200",
-      icon: XCircleIcon,
+      backgroundColor: "bg-lime-400",
+      icon: BanknotesIcon,
     },
   ];
 
@@ -66,13 +68,13 @@ export function DashboardCard() {
             className="md:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 max-w-[20rem]">
             <Card
               variant="gradient"
-              className={`max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} `}
+              className={`p-4 max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} `}
               style={{ height: "200px" }}>
               <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="m-0  text-center flex justify-end items-end ">
+                className="mt-5  text-center flex justify-end items-end ">
                 <item.icon className="h-6 w-6 mr-2 text-white " />
               </CardHeader>
               <CardBody className="flex justify-between p-0">
@@ -89,7 +91,7 @@ export function DashboardCard() {
                 <Typography
                   variant="h1"
                   color="black"
-                  className=" gap-1 text-3xl font-bold text-white ">
+                  className=" gap-1 text-3xl m-5 font-bold text-white ">
                   {item.value}
                 </Typography>
               </CardBody>

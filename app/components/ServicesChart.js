@@ -3,31 +3,44 @@ import React from "react";
 
 const ServicesChart = () => {
   const options = {
+    width: "100%",
+    chart: {
+      height: 500,
+      type: "radialBar",
+    },
+    colors: ["#775DD0", "#00C8E1", "#FFB900"],
+
+    series: [71, 63, 77],
+    labels: ["Relaxing", "Therapeutic", "Scalp"],
+    theme: {
+      monochrome: {
+        enabled: false,
+      },
+    },
     plotOptions: {
-      pie: {
-        customScale: 1,
+      radialBar: {
+        offsetY: 70,
       },
     },
     legend: {
-      fontSize: "16px",
+      show: true,
       position: "bottom",
-
-      horizontalAlign: "center",
-      floating: false,
+      containerMargin: {
+        right: 0,
+      },
     },
-
-    chart: {
-      type: "donut",
+    title: {
+      text: "Services",
+      align: "center",
+      margin: 20,
     },
-    labels: ["Therapeutic", "Relaxing", "Scalp", "Rejuvenating", "Deep Tissue"],
-    series: [44, 55, 41, 17, 15],
   };
 
   return (
     <Chart
       options={options}
       series={options.series}
-      type="donut"
+      type="radialBar"
       className="w-full rounded-md px-6 py-3 shadow-2xl"
     />
   );
