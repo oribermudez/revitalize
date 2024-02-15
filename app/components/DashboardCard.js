@@ -28,7 +28,7 @@ export function DashboardCard() {
       value: 2500,
       monthlyGoal: 10000,
       pathColor: "#ffff",
-      backgroundColor: "#058569",
+      backgroundColor: "bg-teal-700",
       icon: UsersIcon,
     },
     {
@@ -36,7 +36,7 @@ export function DashboardCard() {
       value: 45,
       monthlyGoal: 100,
       pathColor: "#ffff",
-      backgroundColor: "#52ccb2",
+      backgroundColor: "bg-cyan-400",
       icon: ClipboardDocumentListIcon,
     },
     {
@@ -44,25 +44,30 @@ export function DashboardCard() {
       value: 3,
       monthlyGoal: 10,
       pathColor: "#ffff",
-      backgroundColor: "#77aba0",
+      backgroundColor: "bg-emerald-200",
+      icon: XCircleIcon,
+    },
+    {
+      title: "Sales",
+      value: 3,
+      monthlyGoal: 10,
+      pathColor: "#ffff",
+      backgroundColor: "bg-lime-200",
       icon: XCircleIcon,
     },
   ];
 
   return (
     <>
-      <div className="flex flex-wrap justify-center">
-        {cardData.map((item, index) => {
-          return (
+      <div className="flex flex-grow justify-between ">
+        {cardData.map((item, index) => (
+          <div
+            key={index}
+            className="md:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 max-w-[20rem]">
             <Card
-              key={index}
               variant="gradient"
-              className="md:w-1/2 lg:w-1/3 xl:w-1/4 m-4 max-w-[20rem] shadow-2xl border-green-200 p-8 rounded-3xl  flex"
-              style={{
-                height: "200px",
-                width: "350px",
-                backgroundColor: item.backgroundColor,
-              }}>
+              className={`max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} `}
+              style={{ height: "200px" }}>
               <CardHeader
                 floated={false}
                 shadow={false}
@@ -97,8 +102,8 @@ export function DashboardCard() {
                 </Button>
               </CardFooter>
             </Card>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </>
   );

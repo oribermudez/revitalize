@@ -4,55 +4,32 @@ import React from "react";
 const ServicesChart = () => {
   const options = {
     plotOptions: {
-      treemap: {
-        distributed: true,
+      pie: {
+        customScale: 1,
       },
     },
-    chart: {
-      height: 350,
-      type: "treemap",
+    legend: {
+      fontSize: "16px",
+      position: "bottom",
+
+      horizontalAlign: "center",
+      floating: false,
     },
+
+    chart: {
+      type: "donut",
+    },
+    labels: ["Therapeutic", "Relaxing", "Scalp", "Rejuvenating", "Deep Tissue"],
+    series: [44, 55, 41, 17, 15],
   };
 
-  const series = [
-    {
-      data: [
-        {
-          x: "Deep Tissue",
-          y: 218,
-        },
-        {
-          x: "Hot Stone",
-          y: 149,
-        },
-        {
-          x: "Facial Sculpting",
-          y: 184,
-        },
-        {
-          x: "Relaxing",
-          y: 55,
-        },
-        {
-          x: "Theraupetic",
-          y: 84,
-        },
-        {
-          x: "Scalp",
-          y: 31,
-        },
-        {
-          x: "Rejuvenate",
-          y: 70,
-        },
-      ],
-    },
-  ];
-
   return (
-    <div>
-      <Chart options={options} series={series} type="treemap" />
-    </div>
+    <Chart
+      options={options}
+      series={options.series}
+      type="donut"
+      className="w-full rounded-md px-6 py-3 shadow-2xl"
+    />
   );
 };
 

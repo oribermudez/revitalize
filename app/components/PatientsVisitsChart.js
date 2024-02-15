@@ -11,6 +11,9 @@ const PatientsVisitsChart = () => {
     ],
     options: {
       chart: {
+        toolbar: {
+          show: false,
+        },
         type: "area",
         height: "auto",
       },
@@ -75,7 +78,12 @@ const PatientsVisitsChart = () => {
   };
   return (
     <div>
-      <Chart options={data.options} series={data.series} type="area" />
+      <Chart
+        options={data.options}
+        series={data.series}
+        type="area"
+        className="w-full rounded-md px-6 py-3 shadow-2xl"
+      />
     </div>
   );
 };
