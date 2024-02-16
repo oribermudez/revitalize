@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Navbar, IconButton } from "@material-tailwind/react";
 import Image from "next/image";
 import { TOGGLE_SIDEBAR, toggleSidebar } from "../global-state/actions";
+import { useAppState } from "../global-state/AppStateContext";
 
 const FixedNavbar = () => {
   useEffect(() => {
@@ -22,7 +23,9 @@ const FixedNavbar = () => {
           <div className="mr-4 hidden lg:flex justify-between items-center text-black text-sm">
             Welcome, Brooklyn
           </div>
-          <div className="text-black">HOLAA</div>
+          <div className="text-black lg:hidden" onClick={handleToggleSidebar}>
+            HOLAA
+          </div>
         </div>
       </div>
     </Navbar>
