@@ -15,18 +15,16 @@ const Dashboard = () => {
         <DashboardCard />
 
         {/* Second column taking up 3 */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 grid-flow-row-dense">
+          <div className="w-50">
             <PatientsVisitsChart />
           </div>
 
-          <div className="flex flex-grow justify-center">
+          <div className="w-50">
             <ServicesChart />
           </div>
-          <div className="col-span-3 ">
-            <RecentAppointments />
-          </div>
         </div>
+        <RecentAppointments />
       </div>
     </AppStateProvider>
   );

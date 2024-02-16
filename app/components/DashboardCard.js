@@ -61,7 +61,7 @@ export function DashboardCard() {
 
   return (
     <>
-      <div className="flex flex-grow justify-between ">
+      <div className="flex flex-wrap justify-between ">
         {cardData.map((item, index) => (
           <div
             key={index}

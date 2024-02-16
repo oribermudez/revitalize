@@ -54,7 +54,7 @@ const Sidebar = () => {
         state.isSidebarOpen ? "hidden" : "block"
       } lg:block`}>
       <Card
-        className={`fixed h-screen w-full max-w-[19rem] p-4 shadow-xl shadow-blue-gray-900/5 text-[#828282] flex flex-col justify-center text-sm`}>
+        className={`z-20 fixed h-screen w-full max-w-[19rem] p-4 shadow-xl shadow-blue-gray-900/5 text-[#828282] flex flex-col justify-center text-sm`}>
         <div className="text-xs ml-3 text-gray-400 mb-3 mt-20">MENU</div>
         <List>
           <ListItem

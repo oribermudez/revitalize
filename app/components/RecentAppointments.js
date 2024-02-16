@@ -83,7 +83,7 @@ const RecentAppointments = () => {
                   ({ img, name, service, duration, active, date, time }) => (
                     <tr
                       key={name}
-                      className="bg-gray-50 hover:bg-[#779790] transition-colors duration-200">
+                      className="bg-gray-50 hover:bg-[#779790]/40 transition-colors duration-200">
                       <td className="p-4">
                         <div className="flex items-center gap-2">
                           <Avatar
