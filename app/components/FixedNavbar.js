@@ -8,12 +8,11 @@ import { TOGGLE_SIDEBAR, toggleSidebar } from "../global-state/actions";
 import { useAppState } from "../global-state/AppStateContext";
 
 const FixedNavbar = () => {
-  useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
-  }, []);
+  const { dispatch } = useAppState();
+
+  const handleToggleSidebar = () => {
+    dispatch(toggleSidebar({ type: TOGGLE_SIDEBAR }));
+  };
 
   return (
     <Navbar className="fixed top-0 z-10 h-max max-w-full rounded-none px-4 py-2 lg:px-8 ">

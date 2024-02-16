@@ -19,12 +19,13 @@ import {
   UserGroupIcon,
   Bars3Icon,
 } from "@heroicons/react/24/outline";
-import { isSidebarOpen } from "../global-state/actions";
+import { useAppState } from "../global-state/AppStateContext";
 
 const Sidebar = () => {
   const router = useRouter();
   const path = usePathname();
   const [activeItem, setActiveItem] = useState("Dashboard");
+  const { state } = useAppState();
 
   //state for side bar open
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);

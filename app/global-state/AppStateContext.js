@@ -7,10 +7,10 @@ import appointmentsReducer from "./reducers/appointments";
 import usersReducer from "./reducers/users";
 import sidebarReducer from "./reducers/sidebar";
 
-const rootReducer = ({ appointments, users }, action) => ({
+const rootReducer = ({ appointments, users, isSidebarOpen }, action) => ({
   appointments: appointmentsReducer(appointments, action),
   users: usersReducer(users, action),
-  sidebar: sidebarReducer(action),
+  isSidebarOpen: sidebarReducer(isSidebarOpen, action),
 });
 
 const AppStateContext = createContext();

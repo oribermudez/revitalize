@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "../globals.css";
 import FixedNavbar from "../components/FixedNavbar";
 import Sidebar from "../components/Sidebar";
+import { AppStateProvider } from "../global-state/AppStateContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
