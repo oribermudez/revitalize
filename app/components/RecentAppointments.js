@@ -47,7 +47,7 @@ const RecentAppointments = () => {
               </Typography>
             </div>
             <div>
-              <Button className="bg-[#779790] py-2 pr-6 pl-4 text-sm flex items-center" onClick={openModal}>
+              <Button className="bg-main py-2 pr-6 pl-4 text-sm flex items-center" onClick={openModal}>
                 <PlusIcon className="h-4 w-4 mr-2" />
                 New Appointment
               </Button>

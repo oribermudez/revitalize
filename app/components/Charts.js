@@ -7,6 +7,9 @@ const Charts = () => {
   const doughnutChartRef = useRef(null);
   const barChartRef = useRef(null);
 
+  const mainColor = '#006C67';
+  const secondaryColor = '#A0ECD0';
+
   useEffect(() => {
     const lineChartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -14,8 +17,8 @@ const Charts = () => {
         {
           label: 'Appointments',
           data: [10, 25, 27, 19, 24, 36],
-          borderColor: '#779790',
-          backgroundColor: '#779790',
+          borderColor: secondaryColor,
+          backgroundColor: mainColor,
         },
       ],
     };
@@ -25,7 +28,7 @@ const Charts = () => {
       datasets: [
         {
           data: [87, 45],
-          backgroundColor: ['#779790', '#2D4635'],
+          backgroundColor: [secondaryColor, mainColor],
         },
       ],
     };
@@ -36,7 +39,7 @@ const Charts = () => {
         {
           label: 'Cancellations',
           data: [5, 3, 2, 7, 4, 3],
-          backgroundColor: '#779790',
+          backgroundColor: mainColor,
         },
       ],
     };

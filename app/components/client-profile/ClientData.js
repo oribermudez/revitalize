@@ -8,28 +8,27 @@ import Image from 'next/image';
 
 const ClientData = ({ client }) => {
   
-
   return (
-    <div className="py-6 flex flex-col md:flex-row gap-6 md:justify-between">
+    <div className="my-5 flex flex-col md:flex-row gap-6 md:justify-between">
       <Card className="rounded-md w-80">
         <div className='flex flex-col items-center justify-center px-4 pt-8'>
-          <Image src="/assets/team-1.jpg" width={200} height={200} className="rounded-full" />
-          <h4 className="font-semibold text-2xl text-gray-700 mb-4 text-center my-4">Felicia Burke</h4>
-          <Button className="w-42 bg-[#544ff7] text-sm mt-2 mb-6 font-normal">Massages Taken: 12</Button>
+          <Image src="/assets/team-1.jpg" width={200} height={200} className="rounded-full" alt='Profile Pic'/>
+          <h4 className="font-semibold text-2xl text-gray-700 mb-4 text-center my-4">{client.name}</h4>
+          <Button className="w-42 bg-main hover:bg-secondary text-sm mt-1 mb-6 font-normal">Massages Taken: {client.massagesTaken}</Button>
         </div>
-        <div className='flex flex-col justify-center items-center px-4 py-8 bg-slate-100/50 text-sm'>
+        <div className='flex flex-col justify-center items-center px-4 py-8 bg-slate-100/50 text-sm border-t border-slate-200'>
           <div className='flex flex-col'>
             <div className='flex justify-start mb-3'>
               <MapPinIcon className="h-5 w-5 mr-6 text-slate-400" />
-              <p>Calgary, Alberta</p>
+              <p>{client.location}</p>
             </div>
             <div className='flex justify-start mb-3'>
               <EnvelopeIcon className="h-5 w-5 mr-6 text-slate-400" />
-              <p>feliciaburke@gmail.com</p>
+              <p>{client.email}</p>
             </div>
             <div className='flex justify-start mb-3'>
               <DevicePhoneMobileIcon className="h-5 w-5 mr-6 text-slate-400" />
-              <p>+1 (070) 123-4567</p>
+              <p>{client.phone}</p>
             </div>
           </div>
         </div>
