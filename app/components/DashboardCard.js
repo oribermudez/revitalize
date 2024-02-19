@@ -29,7 +29,7 @@ export function DashboardCard() {
       title: "Visits",
       value: 2500,
       monthlyGoal: 10000,
-      pathColor: "#ffff",
+
       backgroundColor: "bg-teal-700",
       icon: UsersIcon,
     },
@@ -37,7 +37,7 @@ export function DashboardCard() {
       title: "Total Appointments",
       value: 45,
       monthlyGoal: 100,
-      pathColor: "#ffff",
+
       backgroundColor: "bg-cyan-400",
       icon: ClipboardDocumentListIcon,
     },
@@ -45,7 +45,7 @@ export function DashboardCard() {
       title: "Cancellations",
       value: 3,
       monthlyGoal: 10,
-      pathColor: "#ffff",
+
       backgroundColor: "bg-emerald-200",
       icon: ArchiveBoxXMarkIcon,
     },
@@ -53,7 +53,7 @@ export function DashboardCard() {
       title: "Sales",
       value: 3,
       monthlyGoal: 10,
-      pathColor: "#ffff",
+
       backgroundColor: "bg-lime-400",
       icon: BanknotesIcon,
     },
@@ -68,34 +68,38 @@ export function DashboardCard() {
             className="md:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 max-w-[20rem]">
             <Card
               variant="gradient"
-              className={`p-4 max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} `}
+              className={`p-4 max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
               style={{ height: "200px" }}>
               <CardHeader
                 floated={false}
                 shadow={false}
                 color="transparent"
-                className="mt-5  text-center flex justify-end items-end ">
+                className="mt-1  mr-3 text-center flex justify-end items-end ">
                 <item.icon className="h-6 w-6 mr-2 text-white " />
               </CardHeader>
               <CardBody className="flex justify-between p-0">
-                <div style={{ width: 90, height: 90 }}>
+                <div style={{ width: 116, height: 116 }}>
                   <CircularProgressbarWithChildren
                     value={item.value}
                     text={`${item.monthlyGoal}%`}
+                    background
                     styles={buildStyles({
-                      pathColor: item.pathColor,
-                      textColor: "#fff",
+                      pathColor: "#18a",
+                      textColor: "#000",
+                      pathTransitionDuration: 0.5,
+                      backgroundColor: "#fff",
                     })}
+                    className="ml-6"
                   />
                 </div>
                 <Typography
                   variant="h1"
                   color="black"
-                  className=" gap-1 text-3xl m-5 font-bold text-white ">
+                  className=" gap-1 text-4xl m-5 font-bold text-white ">
                   {item.value}
                 </Typography>
               </CardBody>
-              <CardFooter className=" p-0">
+              <CardFooter className="ml-8 p-0">
                 <Button
                   size="lg"
                   className="hover:bg-gray-100 font-bold uppercase text-white shadow-transparent  w-50"
