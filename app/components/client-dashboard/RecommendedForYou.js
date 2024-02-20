@@ -8,7 +8,7 @@ const slides = [
   {image: '/assets/relax.jpg', title: 'Hot Stone Massage'}
 ];
 
-const RecommendedForYou = ({ address }) => {
+const RecommendedForYou = () => {
   
   return (
     <div className="mt-4 flex flex-col md:flex-row gap-6 md:justify-between">
