@@ -7,6 +7,10 @@ const Charts = () => {
   const doughnutChartRef = useRef(null);
   const barChartRef = useRef(null);
 
+  const mainColor = '#009B94';
+  const secondaryColor = '#A0ECD0';
+  const highlightColor = '#9DAAFF';
+
   useEffect(() => {
     const lineChartData = {
       labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -14,18 +18,18 @@ const Charts = () => {
         {
           label: 'Appointments',
           data: [10, 25, 27, 19, 24, 36],
-          borderColor: '#779790',
-          backgroundColor: '#779790',
+          borderColor: secondaryColor,
+          backgroundColor: mainColor,
         },
       ],
     };
 
     const doughnutChartData = {
-      labels: ['Female', 'Male'],
+      labels: ['Female', 'Male', 'Not Specified'],
       datasets: [
         {
-          data: [87, 45],
-          backgroundColor: ['#779790', '#2D4635'],
+          data: [87, 45, 20],
+          backgroundColor: [secondaryColor, mainColor, highlightColor],
         },
       ],
     };
@@ -36,7 +40,7 @@ const Charts = () => {
         {
           label: 'Cancellations',
           data: [5, 3, 2, 7, 4, 3],
-          backgroundColor: '#779790',
+          backgroundColor: highlightColor,
         },
       ],
     };
@@ -94,19 +98,19 @@ const Charts = () => {
     <div className="py-6 flex flex-col md:flex-row gap-6 md:justify-between ">
       <Card className="w-full rounded-md">
         <div className="p-4">
-          <h5 className="font-semibold text-lg text-gray-700 mb-4">Completed Appointments</h5>
+          <h5 className="font-semibold text-lg text-slate-700 mb-4">Completed Appointments</h5>
           <canvas ref={lineChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
       <Card className="w-full rounded-md">
         <div className="p-4">
-          <h5 className="font-semibold text-lg text-gray-700 mb-4">Cancellations</h5>
+          <h5 className="font-semibold text-lg text-slate-700 mb-4">Cancellations</h5>
           <canvas ref={barChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
       <Card className="w-full rounded-md">
         <div className="p-4">
-          <h5 className="font-semibold text-lg text-gray-700 mb-4">Total Patients: 132</h5>
+          <h5 className="font-semibold text-lg text-slate-700 mb-4">Total Patients: 132</h5>
           <canvas ref={doughnutChartRef} width="100" height="90"></canvas>
         </div>
       </Card>

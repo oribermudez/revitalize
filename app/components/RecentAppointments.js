@@ -42,26 +42,26 @@ const RecentAppointments = () => {
               <Typography variant="h5" color="blue-gray">
                 Appointments
               </Typography>
-              <Typography color="gray" className="mt-1 font-normal text-gray-300">
+              <Typography color="gray" className="mt-1 font-normal text-slate-300">
                 See information about all your appointments
               </Typography>
             </div>
             <div>
-              <Button className="bg-[#779790] py-2 pr-6 pl-4 text-sm flex items-center" onClick={openModal}>
+              <Button className="bg-main py-2 pr-6 pl-4 text-sm flex items-center" onClick={openModal}>
                 <PlusIcon className="h-4 w-4 mr-2" />
                 New Appointment
               </Button>
             </div>
           </div>
         </CardHeader>
-        <CardBody className="overflow-scroll px-0 h-96 pt-0">
+        <CardBody className="overflow-scroll overflow-x-hidden px-0 h-96 pt-0">
           <table className="w-full min-w-max table-auto text-left">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 text-sm"
+                    className="border-y border-blue-slate-100 bg-blue-slate-50/50 p-4 text-sm"
                   >
                     {head}
                   </th>
@@ -74,7 +74,7 @@ const RecentAppointments = () => {
                   const isLast = index === state.appointments.length - 1;
                   const classes = isLast
                     ? "p-4"
-                    : "p-4 border-b border-blue-gray-50";
+                    : "p-4 border-b border-blue-slate-50";
   
                   return (
                     <tr key={name}>
@@ -138,15 +138,15 @@ const RecentAppointments = () => {
             </tbody>
           </table>
         </CardBody>
-        <CardFooter className="flex items-center justify-between border-t border-blue-gray-50 p-4">
+        <CardFooter className="flex items-center justify-between border-t border-blue-slate-50 p-4">
           <Typography variant="small" color="blue-gray" className="font-normal">
             Page 1 of 10
           </Typography>
           <div className="flex gap-2">
-            <Button variant="outlined" size="sm" className="py-2 px-5 border-2 border-gray-300">
+            <Button variant="outlined" size="sm" className="py-2 px-5 border-2 border-slate-300">
               PREVIOUS
             </Button>
-            <Button variant="outlined" size="sm" className="py-2 px-5 border-2 border-gray-300">
+            <Button variant="outlined" size="sm" className="py-2 px-5 border-2 border-slate-300">
               NEXT
             </Button>
           </div>
