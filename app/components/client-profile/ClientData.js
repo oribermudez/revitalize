@@ -10,7 +10,7 @@ const ClientData = ({ client }) => {
   
   return (
     <div className="my-5 flex flex-col md:flex-row gap-6 md:justify-between">
-      <Card className="rounded-md w-80">
+      <Card className="rounded-md md:w-96">
         <div className='flex flex-col items-center justify-center px-4 pt-8'>
           <Image src="/assets/team-1.jpg" width={200} height={200} className="rounded-full" alt='Profile Pic'/>
           <h4 className="font-semibold text-2xl text-slate-700 mb-4 text-center my-4">{client.name}</h4>

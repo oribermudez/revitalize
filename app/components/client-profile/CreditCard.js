@@ -6,16 +6,16 @@ import Image from 'next/image';
 const CreditCard = ({ payment }) => {
   return (
     <div className="my-5 flex flex-col md:flex-row gap-6 md:justify-between">
-      <Card className="rounded-md w-96">
+      <Card className="rounded-md md:w-96">
         <div className='flex items-center justify-between px-8 pt-2 pb-5'>
-          <h4 className="font-semibold text-xl text-slate-700 mb-4 text-center my-4">Payment Method</h4>
+          <h4 className="font-semibold text-xl text-slate-700 text-center my-4">Payment Method</h4>
         </div>
-        <div className='h-48 bg-gradient-to-r from-accent to-secondary rounded-md m-8 mb-4 mt-2 shadow-md flex flex-col items-center justify-between p-4'>
+        <div className='h-48 bg-gradient-to-r from-accent to-secondary rounded-md m-2 md:m-4 shadow-md flex flex-col items-center justify-between p-4'>
           <div className='w-full flex justify-between items-center'>
             <Image src="/assets/chip.png" width={50} height={100} className="h-10 w-12" alt='Chip'/>
             <Image src="/assets/visa.png" width={100} height={50} className="h-6 w-20" alt='Visa'/>
           </div>
-          <div className='w-full text-white text-2xl text-center'>
+          <div className='w-full text-white text-xl md:text-2xl text-center'>
             <span>{payment.cardNumber}</span>
           </div>
           <div className='w-full text-white flex items-center justify-between'>
@@ -29,7 +29,7 @@ const CreditCard = ({ payment }) => {
             </div>
           </div>
         </div>
-        <div className='flex flex-col pb-3 pt-8 bg-slate-100/50 text-sm border-t border-slate-200 mt-8'>
+        <div className='flex flex-col pb-3 pt-8 bg-slate-100/50 text-sm border-t border-slate-200 mt-6'>
           <div className='text-sm px-8 pb-4 flex justify-between'>
             <span className='text-slate-500'>Card Type:</span>
             <span>{payment.type}</span>

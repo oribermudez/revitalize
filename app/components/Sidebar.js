@@ -31,9 +31,12 @@ const Sidebar = () => {
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
-    if (item === 'Dashboard' || item === 'Schedule' || item === 'Profile') {
+    if (item === 'Dashboard' || item === 'Schedule') {
     router.push(`/${item.toLowerCase()}`);
     };
+    if (item === 'Profile') {
+      router.push(`/client/${item.toLowerCase()}`);
+      };
   };
 
   useEffect(() => {

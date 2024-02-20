@@ -4,7 +4,7 @@ const PersonalDetails = ({ address }) => {
   
   return (
     <div className="mt-5 flex flex-col md:flex-row gap-6 md:justify-between">
-      <Card className="rounded-md w-96 h-64">
+      <Card className="rounded-md md:w-96 h-64">
         <div className='flex items-center justify-between px-8 pt-2 pb-5'>
           <h4 className="font-semibold text-xl text-slate-700 mb-4 text-center my-4">Home Address</h4>
         </div>

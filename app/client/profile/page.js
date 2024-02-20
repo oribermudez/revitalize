@@ -42,12 +42,12 @@ const Profile = () => {
 
   return (
     <AppStateProvider>
-      <div className="col-span-4 w-full h-full p-8 mt-20">
+      <div className="col-span-1 md:col-span-4 w-full h-full p-8 mt-20">
         <h2 className="text-[#2D4635] font-bold text-xl">
           Profile
         </h2>
         <Breadcrumbs />
-        <div className='flex gap-4'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-4'>
           <ClientData client={client} />
           <div>
             <PersonalDetails address={client.address} />
