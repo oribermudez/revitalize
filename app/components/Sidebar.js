@@ -44,8 +44,8 @@ const Sidebar = () => {
   const isItemActive = (item) => item === activeItem;
  
   return (
-    <Card className="fixed h-screen w-full max-w-[19rem] p-4 shadow-xl shadow-blue-gray-900/5 text-[#828282] flex flex-col justify-center text-sm">
-      <div className='text-xs ml-3 text-gray-400 mb-3 mt-20'>
+    <Card className="fixed h-screen w-full max-w-[19rem] p-4 shadow-xl shadow-blue-slate-900/5 text-slate-500 flex flex-col justify-center text-sm">
+      <div className='text-xs ml-3 text-slate-500 mb-3 mt-20'>
         MENU
       </div>
       <List>
@@ -121,8 +121,8 @@ const Sidebar = () => {
           </ListItemPrefix>
             Analytics
         </ListItem>
-        <hr className="my-2 border-blue-gray-50" />
-        <div className='text-xs ml-3 my-3 text-gray-400'>
+        <hr className="my-2 border-blue-slate-50" />
+        <div className='text-xs ml-3 my-3 text-slate-500'>
           GENERAL
         </div>
          <ListItem

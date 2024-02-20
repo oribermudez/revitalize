@@ -50,7 +50,7 @@ const NewAppointment = ({ onClose }) => {
             <label
               htmlFor="name"
               className={`absolute left-2 ${
-                name ? 'text-gray-600 text-xs' : 'text-gray-400 text-md'
+                name ? 'text-slate-600 text-xs' : 'text-slate-500 text-md'
               } transition-all pointer-events-none`}
             >
               First Name
@@ -60,14 +60,14 @@ const NewAppointment = ({ onClose }) => {
               id="name"
               onChange={(e) => setName(e.target.value)}
               required
-              className={`w-full px-2 py-1 border-b-2 text-gray-600 text-sm border-gray-300 focus:border-main bg-white focus:outline-none ${name && 'pt-4'}`}
+              className={`w-full px-2 py-1 border-b-2 text-slate-600 text-sm border-slate-300 focus:border-main bg-white focus:outline-none ${name && 'pt-4'}`}
             />
           </div>
           <div className="relative mb-6">
             <label
               htmlFor="lastName"
               className={`absolute left-2 ${
-                lastName ? 'text-gray-600 text-xs' : 'text-gray-400 text-md'
+                lastName ? 'text-slate-600 text-xs' : 'text-slate-500 text-md'
               } transition-all pointer-events-none`}
             >
               Last Name
@@ -77,7 +77,7 @@ const NewAppointment = ({ onClose }) => {
               id="name"
               onChange={(e) => setLastName(e.target.value)}
               required
-              className={`w-full px-2 py-1 border-b-2 text-gray-600 text-sm border-gray-300 focus:border-main bg-white focus:outline-none ${lastName && 'pt-4'}`}
+              className={`w-full px-2 py-1 border-b-2 text-slate-600 text-sm border-slate-300 focus:border-main bg-white focus:outline-none ${lastName && 'pt-4'}`}
             />
           </div>
           <div className="mb-6">
@@ -86,7 +86,7 @@ const NewAppointment = ({ onClose }) => {
               placeholderText='Select a date'
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
-              className="w-full p-2 border-b-2 border-gray-300 outline-none focus:border-main"
+              className="w-full p-2 border-b-2 border-slate-300 outline-none focus:border-main"
               dateFormat="dd/MM/yyyy"
               required
             />

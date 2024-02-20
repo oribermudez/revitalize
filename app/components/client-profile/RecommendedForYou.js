@@ -14,7 +14,7 @@ const RecommendedForYou = ({ address }) => {
     <div className="mt-4 flex flex-col md:flex-row gap-6 md:justify-between">
       <Card className="rounded-md w-96 h-64">
         <div className='flex items-center justify-between px-8 pt-2'>
-          <h4 className="font-semibold text-xl text-gray-700 mb-4 text-center my-4">Recommended for you</h4>
+          <h4 className="font-semibold text-xl text-slate-700 mb-4 text-center my-4">Recommended for you</h4>
         </div>
         <div className=''>
          <Carousel slides={slides} />

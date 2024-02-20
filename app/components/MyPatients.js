@@ -61,7 +61,7 @@ const MyPatients = () => {
             placeholder="Search patients"
             className="border-2 border-lightgrey rounded-md px-4 py-2 pr-10 focus:outline-none focus:border-accent transition duration-100 ease-in-out"
           />
-          <MagnifyingGlassIcon className="absolute right-3 top-3 h-5 w-5 text-blue-gray-400" />
+          <MagnifyingGlassIcon className="absolute right-3 top-3 h-5 w-5 text-blue-slate-500" />
         </div>
         <Button className="bg-main py-2 pr-6 pl-4 text-sm flex items-center">
                 <PlusIcon className="h-4 w-4 mr-2" />
@@ -75,7 +75,7 @@ const MyPatients = () => {
             {TABLE_HEAD.map((head) => (
               <th
                 key={head}
-                className="border-b border-lightgrey bg-blue-gray-50 p-4"
+                className="border-b border-lightgrey bg-blue-slate-50 p-4"
               >
                 <Typography
                   variant="small"
@@ -93,7 +93,7 @@ const MyPatients = () => {
             const isLast = index === filteredRows.length - 1;
             const classes = isLast
               ? "p-4"
-              : "p-4 border-b border-blue-gray-50";
+              : "p-4 border-b border-blue-slate-50";
 
             return (
               <tr key={name}>
