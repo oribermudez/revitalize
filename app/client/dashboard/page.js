@@ -30,11 +30,11 @@ const ClientDashboard = () => {
         </h2>
         <Breadcrumbs />
         <HighlightCards />
-        <div className='grid grid-cols-3 gap-6'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
           <UpcomingAppointments />
-          <div className='col-span-2'>
+          <div className='lg:col-span-2'>
             <Card className='rounded-md p-8'>
-              <div className='flex justify-between items-center'>
+              <div className='flex flex-col lg:flex-row justify-between items-center'>
                 <h4 className='font-bold text-black text-xl'>My Calendar</h4>
                   <Button className="bg-main py-2 pr-6 pl-4 text-sm flex items-center" onClick={openModal}>
                     <PlusIcon className="h-4 w-4 mr-2" />

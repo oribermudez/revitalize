@@ -9,7 +9,7 @@ import {
 const HighlightCards = () => {
   
   return (
-    <div className='grid grid-cols-3 gap-6 py-8'>
+    <div className='grid grid-cols-1 lg:grid-cols-3 gap-6 py-8'>
       <Card className="rounded-md w-full h-42 p-6 flex flex-col duration-300 ease-in-out transform hover:scale-105 hover:bg-secondary/30">
         <div className='flex items-center text-slate-500'>
           <span className='text-white bg-main p-2 w-fit rounded-md text-right mr-4'>
