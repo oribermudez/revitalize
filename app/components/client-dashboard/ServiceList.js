@@ -24,7 +24,7 @@ const Services = () => {
     <>
       <div className="mt-4">
         <h4 className='my-8 font-bold'>Massage Therapy</h4>
-        <p className='bg-main/60 p-4 text-white text-sm mb-8 rounded-md shadow-md'>Massage therapy offers a holistic solution for both physical and mental health, providing relaxation, reducing muscle tension, and relieving stress. It promotes overall well-being by enhancing circulation, releasing endorphins, and fostering a sense of calm and balance.</p>
+        <p className='bg-main/60 p-4 text-white mb-8 rounded-md shadow-md'>Massage therapy offers a holistic solution for both physical and mental health, providing relaxation, reducing muscle tension, and relieving stress. It promotes overall well-being by enhancing circulation, releasing endorphins, and fostering a sense of calm and balance.</p>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
           {massageTherapy.map((massage, index) => (
             <Service key={massage.title} massage={massage} index={index} />
@@ -34,7 +34,7 @@ const Services = () => {
       </div>
       <div className="mt-4">
         <h4 className='my-8 font-bold'>Facial & Buccal Therapy</h4>
-        <p className='bg-main/60 p-4 text-white text-sm mb-8 rounded-md shadow-md'>Facial and buccal therapy revitalizes skin health and relaxation through targeted techniques that improve circulation, lymphatic drainage, and muscle tension relief. By enhancing skin tone and texture while reducing headaches and promoting relaxation, these therapies offer a holistic approach to skincare and well-being, leaving individuals feeling rejuvenated and refreshed.</p>
+        <p className='bg-main/60 p-4 text-white mb-8 rounded-md shadow-md'>Facial and buccal therapy revitalizes skin health and relaxation through targeted techniques that improve circulation, lymphatic drainage, and muscle tension relief. By enhancing skin tone and texture while reducing headaches and promoting relaxation, these therapies offer a holistic approach to skincare and well-being, leaving individuals feeling rejuvenated and refreshed.</p>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
           {facialTherapy.map((massage, index) => (
             <Service key={massage.title} massage={massage} index={index} />
@@ -43,7 +43,7 @@ const Services = () => {
       </div>
       <div className="mt-4">
         <h4 className='my-8 font-bold'>Special Treatments</h4>
-        <p className='bg-main/60 p-4 text-white text-sm mb-8 rounded-md shadow-md'>Special treatments like hot stone massage and rejuvenation therapy offer unique benefits for physical and mental well-being. Hot stone massage uses heated stones to relax muscles and improve circulation, while rejuvenation therapy combines massage, exfoliation, and aromatherapy to revitalize the body and mind. These treatments provide a luxurious and effective way to reduce stress, boost energy levels, and promote overall health and vitality.</p>
+        <p className='bg-main/60 p-4 text-white mb-8 rounded-md shadow-md'>Special treatments like hot stone massage and rejuvenation therapy offer unique benefits for physical and mental well-being. Hot stone massage uses heated stones to relax muscles and improve circulation, while rejuvenation therapy combines massage, exfoliation, and aromatherapy to revitalize the body and mind. These treatments provide a luxurious and effective way to reduce stress, boost energy levels, and promote overall health and vitality.</p>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-6'>
           {specialTreatments.map((massage, index) => (
             <Service key={massage.title} massage={massage} index={index} />

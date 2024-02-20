@@ -17,7 +17,7 @@ const Service = ({ massage, index }) => {
 
   return (
     <Card className={`group transition rounded-md duration-300 ease-in-out transform hover:scale-105 ${setBackgroundColor(index)}`}>
-      <div className="grid grid-cols-2 rounded-md h-64 overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 rounded-md lg:h-64 overflow-hidden">
         <div className="relative">
           <Image src={massage.image} alt={massage.title} width={400} height={400} className="w-80 h-full object-cover rounded-l-md" />
           <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
