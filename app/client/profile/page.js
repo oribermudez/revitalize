@@ -20,7 +20,7 @@ const client = {
     postalCode: 'T2T 2T2'
     },
   insurance: {
-    provider: 'Sunlife',
+    provider: 'sunlife',
     policyNumber: '123456789',
     expiryDate: '2021-12-31',
     isVerified: true
