@@ -1,5 +1,10 @@
-import Chart from "react-apexcharts";
+"use client";
+
 import React from "react";
+
+import dynamic from "next/dynamic";
+
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const ServicesChart = () => {
   const options = {
@@ -38,6 +43,8 @@ const ServicesChart = () => {
 
   return (
     <Chart
+      height={420}
+      width={700}
       options={options}
       series={options.series}
       type="radialBar"

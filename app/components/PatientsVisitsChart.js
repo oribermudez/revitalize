@@ -1,5 +1,10 @@
-import Chart from "react-apexcharts";
+"use client";
+
 import React from "react";
+
+import dynamic from "next/dynamic";
+
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const PatientsVisitsChart = () => {
   const data = {
@@ -79,6 +84,8 @@ const PatientsVisitsChart = () => {
   return (
     <div>
       <Chart
+        height={420}
+        width={700}
         options={data.options}
         series={data.series}
         type="area"
