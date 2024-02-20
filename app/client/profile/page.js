@@ -4,7 +4,7 @@ import { AppStateProvider } from '../../global-state/AppStateContext';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 import ClientData from '@/app/components/client-profile/ClientData';
 import InsuranceInformation from '@/app/components/client-profile/InsuranceInformation';
-import PersonalDetails from '@/app/components/client-profile/PersonalDetails';
+import PersonalDetails from '@/app/components/client-profile/HomeAddress';
 import CreditCard from '@/app/components/client-profile/CreditCard';
 
 const client = {

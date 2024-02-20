@@ -2,9 +2,9 @@
 
 import { AppStateProvider } from '../../global-state/AppStateContext';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
-import Services from '@/app/components/client-dashboard/ServiceList';
+import ServiceList from '@/app/components/our-services/ServiceList';
 
-const ServiceList = () => {
+const Services = () => {
 
   return (
     <AppStateProvider>
@@ -14,11 +14,11 @@ const ServiceList = () => {
         </h2>
         <Breadcrumbs />
         <div className=''>
-          <Services />
+          <ServiceList />
         </div>
       </div>
     </AppStateProvider>
   );
 };
 
-export default ServiceList;
+export default Services;
