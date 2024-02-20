@@ -51,7 +51,7 @@ const RecentAppointments = () => {
 
   return (
     <>
-      <Card className="w-full rounded-md px-6 py-3 shadow-2xl">
+      <Card className="w-full rounded-md px-6 py-3 shadow-2xl mt-6">
         <CardHeader floated={true} shadow={false} className="rounded-none">
           <div className=" flex items-center justify-between ">
             <h1 className="text-gray-500 m-8 font-bold">Appointments</h1>

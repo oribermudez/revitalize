@@ -15,6 +15,7 @@ const PatientsVisitsChart = () => {
       },
     ],
     options: {
+      width: "100%",
       chart: {
         toolbar: {
           show: false,
@@ -68,7 +69,7 @@ const PatientsVisitsChart = () => {
       title: {
         text: "Patients Visits",
         align: "center",
-        margin: 10,
+        margin: 20,
         offsetX: 0,
         offsetY: 0,
         floating: true,
@@ -79,13 +80,24 @@ const PatientsVisitsChart = () => {
           color: "#263238",
         },
       },
+      responsive: [
+        {
+          breakpoint: 1000,
+          options: {
+            chart: {
+              height: 400,
+              width: "100%",
+            },
+          },
+        },
+      ],
     },
   };
   return (
     <div>
       <Chart
-        height={420}
-        width={700}
+        height={400}
+        width="100%"
         options={data.options}
         series={data.series}
         type="area"

@@ -6,6 +6,7 @@ import { Navbar, IconButton } from "@material-tailwind/react";
 import Image from "next/image";
 import { TOGGLE_SIDEBAR, toggleSidebar } from "../global-state/actions";
 import { useAppState } from "../global-state/AppStateContext";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 
 const FixedNavbar = () => {
   const { dispatch } = useAppState();
@@ -23,7 +24,7 @@ const FixedNavbar = () => {
             Welcome, Brooklyn
           </div>
           <div className="text-black lg:hidden" onClick={handleToggleSidebar}>
-            HOLAA
+            <Bars3Icon className="h-6 w-6 mr-2 text-black" />
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ const ServicesChart = () => {
   const options = {
     width: "100%",
     chart: {
-      height: 500,
+      height: "auto",
       type: "radialBar",
     },
     colors: ["#775DD0", "#00C8E1", "#FFB900"],
@@ -38,13 +38,26 @@ const ServicesChart = () => {
       text: "Services",
       align: "center",
       margin: 20,
+      offsetX: 0,
+      offsetY: 0,
     },
+    responsive: [
+      {
+        breakpoint: 1000,
+        options: {
+          chart: {
+            height: 400,
+            width: "100%",
+          },
+        },
+      },
+    ],
   };
 
   return (
     <Chart
-      height={420}
-      width={700}
+      height={400}
+      width="100%"
       options={options}
       series={options.series}
       type="radialBar"

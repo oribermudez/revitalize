@@ -65,10 +65,10 @@ export function DashboardCard() {
         {cardData.map((item, index) => (
           <div
             key={index}
-            className="md:w-1/2 lg:w-1/3 xl:w-1/4 mb-8 max-w-[20rem]">
+            className="w-full lg:w-1/3 xl:w-1/4 mb-8 max-w-[20rem]">
             <Card
               variant="gradient"
-              className={`p-4 max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
+              className={`w-full lg:w-auto p-4 max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
               style={{ height: "200px" }}>
               <CardHeader
                 floated={false}
@@ -84,10 +84,11 @@ export function DashboardCard() {
                     text={`${item.monthlyGoal}%`}
                     background
                     styles={buildStyles({
-                      pathColor: "#18a",
-                      textColor: "#000",
-                      pathTransitionDuration: 0.5,
-                      backgroundColor: "#fff",
+                      textColor: "#ffff",
+                      pathTransitionDuration: 0.15,
+                      trailColor: "#e4e4e7",
+                      backgroundColor: "transparent",
+                      pathColor: "#ffff",
                     })}
                     className="ml-6"
                   />
