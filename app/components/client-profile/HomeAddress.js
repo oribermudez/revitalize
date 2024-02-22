@@ -1,6 +1,6 @@
 import { Card } from '@material-tailwind/react';
 
-const PersonalDetails = ({ address }) => {
+const HomeAddress = ({ address }) => {
   
   return (
     <div className="mt-5 flex flex-col md:flex-row gap-6 md:justify-between">
@@ -31,4 +31,4 @@ const PersonalDetails = ({ address }) => {
   );
 };
 
-export default PersonalDetails;
+export default HomeAddress;

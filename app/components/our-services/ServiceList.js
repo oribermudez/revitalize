@@ -1,4 +1,4 @@
-import Service from '@/app/components/client-dashboard/Service';
+import Service from '@/app/components/our-services/Service';
 
 const massageTherapy = [
   {image: '/assets/massage1.jpg', title: 'Relaxation Massage', description: 'Relax your muscles and relieve tension with our soothing relaxation massage.'},
