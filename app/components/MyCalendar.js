@@ -9,7 +9,7 @@ const localizer = momentLocalizer(moment);
 const eventStyleGetter = () => {
 
   const style = {
-    backgroundColor: '#009B94',
+    backgroundColor: '#77aba0',
     borderRadius: '0px',
     opacity: 0.8,
     color: 'white',

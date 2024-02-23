@@ -51,52 +51,47 @@ const RecentAppointments = () => {
 
   return (
     <>
-      <Card className="w-full rounded-md px-6 py-3">
-        <CardHeader floated={false} shadow={false} className="rounded-none">
-          <div className="mb-8 flex items-center justify-between">
-            <div>
-              <Typography variant="h5" color="blue-gray">
-                Appointments
-              </Typography>
-              <Typography color="gray" className="mt-1 font-normal text-slate-300">
-                See information about all your appointments
-              </Typography>
-            </div>
-            <div>
-              <Button className="bg-main py-2 pr-6 pl-4 text-sm flex items-center" onClick={openModal}>
-                <PlusIcon className="h-4 w-4 mr-2" />
-                New Appointment
-              </Button>
+      <Card className="w-full rounded-md px-6 py-3 shadow-2xl mt-6">
+        <CardHeader floated={true} shadow={false} className="rounded-none">
+          <div className=" flex items-center justify-between ">
+            <h1 className="text-gray-500 m-8 font-bold">Appointments</h1>
+            <div className="flex items-center justify-end">
+              <div className="py-2 pr-6 pl-4 text-sm" onClick={openModal}>
+                <PlusCircleIcon className="h-8 w-8 hover:stroke-black stroke-white fill-[#779790]" />
+              </div>
+              <div>
+                <PencilSquareIcon className="h-8 w-8 hover:stroke-black stroke-white fill-[#779790]" />
+              </div>
             </div>
           </div>
         </CardHeader>
-        <CardBody className="overflow-scroll overflow-x-hidden px-0 h-96 pt-0">
-          <table className="w-full min-w-max table-auto text-left">
+        <CardBody className="overflow-x-auto overflow-y-hidden scrollbar-hidden px-0 pt-0">
+          <table className="w-full min-w-max table-auto text-left ">
             <thead>
               <tr className="">
                 {TABLE_HEAD.map((head) => (
-                  <th
-                    key={head}
-                    className="border-y border-blue-slate-100 bg-blue-slate-50/50 p-4 text-sm"
-                  >
+                  <th key={head} className="text-gray-500 p-4 text-sm">
                     {head}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody>
-              {state?.appointments?.length && state.appointments.map(
-                ({ img, name, service, duration, active, date }, index) => {
-                  const isLast = index === state.appointments.length - 1;
-                  const classes = isLast
-                    ? "p-4"
-                    : "p-4 border-b border-blue-slate-50";
-  
-                  return (
-                    <tr key={name}>
-                      <td className={classes}>
-                        <div className="flex items-center gap-3">
-                          <Avatar src={img} alt={name} size="xs" />
+            <tbody className="divide-y-8 divide-white">
+              {state?.appointments
+                ?.slice(0, visibleRows)
+                ?.map(
+                  ({ img, name, service, duration, active, date, time }) => (
+                    <tr
+                      key={name}
+                      className="bg-gray-50 hover:bg-[#779790]/40 transition-colors duration-200">
+                      <td className="p-4">
+                        <div className="flex items-center gap-2">
+                          <Avatar
+                            src={img}
+                            alt={name}
+                            size="xs"
+                            className="rounded-full"
+                          />
                           <div className="flex flex-col">
                             <Typography variant="small" color="blue-gray">
                               {name}
@@ -142,18 +137,18 @@ const RecentAppointments = () => {
             </tbody>
           </table>
         </CardBody>
-        <CardFooter className="flex items-center justify-between border-t border-blue-slate-50 p-4">
-          <Typography variant="small" color="blue-gray" className="font-normal">
-            Page 1 of 10
-          </Typography>
-          <div className="flex gap-2">
-            <Button variant="outlined" size="sm" className="py-2 px-5 border-2 border-slate-300">
-              PREVIOUS
+        <CardFooter className="flex items-center justify-center b p-4">
+          {!isExpanded && visibleRows < state?.appointments?.length ? (
+            <div
+              className="text-[#779790] text-sm font-bold border-none hover:underline cursor-pointer"
+              onClick={handleSeeMoreClick}>
+              See More
+            </div>
+          ) : (
+            <Button className="bg-[#779790]" onClick={handleCollapseClick}>
+              Collapse
             </Button>
-            <Button variant="outlined" size="sm" className="py-2 px-5 border-2 border-slate-300">
-              NEXT
-            </Button>
-          </div>
+          )}
         </CardFooter>
       </Card>
 
