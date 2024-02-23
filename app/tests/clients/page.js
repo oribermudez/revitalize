@@ -33,7 +33,6 @@ const ClientSearch = () => {
       if (response.ok) {
         const data = await response.json();
         setSearchResults(data);
-        console.log(data);
       } else {
         console.error("Error fetching data: " + response.statusText);
       }
@@ -44,8 +43,6 @@ const ClientSearch = () => {
 
   const handleDelete = async (clientId) => {
     try {
-      console.log(clientId);
-
       const confirmation = window.confirm(
         "Are you sure you want to delete this client?"
       );
@@ -102,9 +99,7 @@ const ClientSearch = () => {
   return (
     <div className="max-w-md mx-auto mt-8">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md">
-        <h2 className="text-black text-2xl font-semibold mb-4">
-          Search for a Client
-        </h2>
+        <h2 className="text-2xl font-semibold mb-4">Search for a Client</h2>
 
         <div className="mb-4">
           <input
@@ -141,15 +136,10 @@ const ClientSearch = () => {
       </form>
       {searchResults && (
         <div className="mt-4 bg-white p-4 rounded shadow-md">
-          <h3 className="text-black text-lg font-semibold mb-4">
-            Search Results
-          </h3>
+          <h3 className="text-lg font-semibold mb-4">Search Results</h3>
           <div className="grid grid-cols-1 gap-4">
             {searchResults.map((client) => (
-              <div
-                key={client._id}
-                className="text-black bg-blue-400 p-4 rounded"
-              >
+              <div key={client._id} className="bg-blue-400 p-4 rounded">
                 <p className="text-xl font-semibold">
                   {client.firstName} {client.lastName}
                 </p>

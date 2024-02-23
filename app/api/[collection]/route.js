@@ -1,60 +1,29 @@
 import connectMongoDB from "@/libs/mongodb";
 import { ObjectId } from "mongodb";
 
-// TODO: use more globals to use 1 db connection instead of multiple
-// use cache in mongodb.js?
-const collection = "clients";
-// const collection = db.collection("clients")
-// const { db } = await connectMongoDB();
+const { db } = await connectMongoDB();
 
-// Add a new client
+// Add a new document
 export async function POST(request) {
   try {
     console.log("POST request received");
     const body = await request.json();
-    const {
-      firstName,
-      lastName,
-      address,
-      email,
-      phone,
-      password,
-      soapNotes,
-      personalNotes,
-    } = body;
-    const { db } = await connectMongoDB();
+    const collection = request.nextUrl.pathname.split("/").pop();
 
-    // check if client already exists
-    const existingClient = await db
-      .collection(collection)
-      .findOne({ email: email }); // probably better to use _id
-    if (existingClient) {
-      return new Response(
-        JSON.stringify({ message: "Error, client already exists." }),
-        {
-          headers: { "Content-Type": "application/json" },
-          status: 400,
-        }
-      );
+    // check if any fields are _id. Make it a MongoDB reference
+    const objectIdPattern = /^[0-9a-fA-F]{24}$/;
+    for (const key in body) {
+      if (objectIdPattern.test(body[key])) {
+        body[key] = new ObjectId(body[key]);
+      }
     }
 
-    // TODO: covert password to hash
-
-    const newDocument = {
-      firstName,
-      lastName,
-      address,
-      email,
-      phone,
-      password,
-      soapNotes,
-      personalNotes,
-    };
-
-    await db.collection(collection).insertOne(newDocument);
+    await db.collection(collection).insertOne(body);
 
     return new Response(
-      JSON.stringify({ message: "New client added successfully." }),
+      JSON.stringify({
+        message: `New document added to ${collection} successfully.`,
+      }),
       {
         headers: { "Content-Type": "application/json" },
         status: 201,
@@ -71,27 +40,18 @@ export async function POST(request) {
   }
 }
 
-// Search for client(s)
-// if no parameters, get list of all clients
-// if parameters, search for matching client(s)
-// currently only first/last name but could be anything status/email/phone
+// get document(s) with optional parameters
 export async function GET(request) {
   try {
-    console.log("GET request received");
-    const { db } = await connectMongoDB();
-
-    // `/api/clients?firstName=${formData.firstName}&lastName=${formData.lastName}`
-    const firstName = request.nextUrl.searchParams.get("firstName");
-    const lastName = request.nextUrl.searchParams.get("lastName");
+    console.log(`GET request received`);
+    const collection = request.nextUrl.pathname.split("/").pop();
+    const params = request.nextUrl.searchParams;
 
     const query = {};
-    if (firstName) {
-      query.firstName = firstName;
-    }
-    if (lastName) {
-      query.lastName = lastName;
-    }
-    //console.log("Query: ", query);
+
+    params.forEach((value, key) => {
+      if (value !== "") query[key] = value;
+    });
 
     const data = await db.collection(collection).find(query).toArray();
 
@@ -110,17 +70,19 @@ export async function GET(request) {
   }
 }
 
-// Delete client
+// Delete a document
 export async function DELETE(request) {
   try {
     console.log("DELETE request received");
+    const collection = request.nextUrl.pathname.split("/").pop();
     const id = request.nextUrl.searchParams.get("id");
-    const { db } = await connectMongoDB();
 
     await db.collection(collection).deleteOne({ _id: new ObjectId(id) });
 
     return new Response(
-      JSON.stringify({ message: "Document deleted successfully." }),
+      JSON.stringify({
+        message: `Document id#${id} deleted from ${collection} successfully.`,
+      }),
       {
         headers: { "Content-Type": "application/json" },
         status: 200,
@@ -137,19 +99,15 @@ export async function DELETE(request) {
   }
 }
 
-// Edit a client
+// Edit a document
 export async function PUT(request) {
   try {
     console.log("PUT request received");
-    const id = request.nextUrl.searchParams.get("id");
     const body = await request.json();
-
-    console.log("Body: ", body);
+    const collection = request.nextUrl.pathname.split("/").pop();
+    const id = request.nextUrl.searchParams.get("id");
 
     const { ...updatedFields } = body;
-    const { db } = await connectMongoDB();
-
-    console.log("id: ", id);
 
     const result = await db.collection(collection).findOneAndUpdate(
       { _id: new ObjectId(id) },
@@ -159,8 +117,8 @@ export async function PUT(request) {
 
     return new Response(
       JSON.stringify({
-        message: "Client updated successfully.",
-        updatedDocument: result.value, // send the updated document back so the state can be updated without another fetch
+        message: `Document id#${id} in ${collection} updated successfully.`,
+        updatedDocument: result.value, // send the updated document back so the state can be updated without another query
       }),
       {
         headers: { "Content-Type": "application/json" },

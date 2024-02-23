@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-const AddClient = () => {
+const ClientForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -13,6 +13,8 @@ const AddClient = () => {
     soapNotes: "",
     personalNotes: "",
   });
+
+  const collection = "clients";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +29,7 @@ const AddClient = () => {
     //TODO: form validation checks
 
     try {
-      const response = await fetch("/api/clients", {
+      const response = await fetch(`/api/${collection}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,8 +37,6 @@ const AddClient = () => {
         body: JSON.stringify(formData),
       });
       const data = await response.json();
-
-      // console.log(data);
 
       alert(data.message);
     } catch (error) {
@@ -47,9 +47,7 @@ const AddClient = () => {
   return (
     <div className="max-w-md mx-auto mt-8">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded shadow-md">
-        <h2 className="text-black text-2xl font-semibold mb-4">
-          Add a New Client
-        </h2>
+        <h2 className="text-2xl font-semibold mb-4">Client Information</h2>
 
         <div className="mb-4">
           <input
@@ -160,4 +158,4 @@ const AddClient = () => {
   );
 };
 
-export default AddClient;
+export default ClientForm;
