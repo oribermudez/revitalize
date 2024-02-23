@@ -26,22 +26,25 @@ import "react-circular-progressbar/dist/styles.css";
 export function DashboardCard() {
   const cardData = [
     {
-      title: "Visits",
-      value: 2500,
-      monthlyGoal: 10000,
-
+      //Percentage of clients that booked more than 3 appointments in the last 90 days
+      //(number of clients with 3 or more appts in the last 90 days/ total number of clients)*100
+      title: "Frequent Clients",
+      value: 250,
+      monthlyGoal: 65,
       backgroundColor: "bg-teal-700",
       icon: UsersIcon,
     },
     {
+      //Percentage of appointments booked until now compared to the monthly goal
       title: "Total Appointments",
       value: 45,
-      monthlyGoal: 100,
+      monthlyGoal: 44,
 
       backgroundColor: "bg-cyan-400",
       icon: ClipboardDocumentListIcon,
     },
     {
+      // (total cancelled appointments/total appointments)*100
       title: "Cancellations",
       value: 3,
       monthlyGoal: 10,
@@ -50,6 +53,7 @@ export function DashboardCard() {
       icon: ArchiveBoxXMarkIcon,
     },
     {
+      //percentage of sales made until now compared to last month
       title: "Sales",
       value: 3,
       monthlyGoal: 10,
