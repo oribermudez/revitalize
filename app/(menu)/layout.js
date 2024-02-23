@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AppStateProvider>
-          <div className="bg-[#f4f8f7] text-black overflow-hidden">
+          <div className="bg-[#f4f8f7] text-black overflow-x-hidden overflow-y h-screen">
             <FixedNavbar />
             <div className="grid grid-cols-1 md:grid-cols-5">
               <Sidebar />

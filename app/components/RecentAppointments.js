@@ -54,13 +54,13 @@ const RecentAppointments = () => {
       <Card className="w-full rounded-md px-6 py-3 shadow-2xl mt-6">
         <CardHeader floated={true} shadow={false} className="rounded-none">
           <div className=" flex items-center justify-between ">
-            <h1 className="text-gray-500 m-8 font-bold">Appointments</h1>
+            <h1 className="text-slate-500 m-8 font-bold">Appointments</h1>
             <div className="flex items-center justify-end">
               <div className="py-2 pr-6 pl-4 text-sm" onClick={openModal}>
-                <PlusCircleIcon className="h-8 w-8 hover:stroke-black stroke-white fill-[#779790]" />
+                <PlusCircleIcon className="h-8 w-8 hover:stroke-black stroke-white fill-main" />
               </div>
               <div>
-                <PencilSquareIcon className="h-8 w-8 hover:stroke-black stroke-white fill-[#779790]" />
+                <PencilSquareIcon className="h-8 w-8 hover:stroke-black stroke-white fill-main" />
               </div>
             </div>
           </div>
@@ -70,7 +70,9 @@ const RecentAppointments = () => {
             <thead>
               <tr className="">
                 {TABLE_HEAD.map((head) => (
-                  <th key={head} className="text-gray-500 p-4 text-sm">
+                  <th
+                    key={head}
+                    className="border-y border-blue-slate-100 bg-blue-slate-50/50 p-4 text-sm">
                     {head}
                   </th>
                 ))}
@@ -83,7 +85,7 @@ const RecentAppointments = () => {
                   ({ img, name, service, duration, active, date, time }) => (
                     <tr
                       key={name}
-                      className="bg-gray-50 hover:bg-[#779790]/40 transition-colors duration-200">
+                      className="bg-slate-50 hover:bg-main/40 transition-colors duration-200">
                       <td className="p-4">
                         <div className="flex items-center gap-2">
                           <Avatar
@@ -140,12 +142,12 @@ const RecentAppointments = () => {
         <CardFooter className="flex items-center justify-center b p-4">
           {!isExpanded && visibleRows < state?.appointments?.length ? (
             <div
-              className="text-[#779790] text-sm font-bold border-none hover:underline cursor-pointer"
+              className="text-main text-sm font-bold border-none hover:underline cursor-pointer"
               onClick={handleSeeMoreClick}>
               See More
             </div>
           ) : (
-            <Button className="bg-[#779790]" onClick={handleCollapseClick}>
+            <Button className="bg-main" onClick={handleCollapseClick}>
               Collapse
             </Button>
           )}
