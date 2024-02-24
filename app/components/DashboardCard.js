@@ -31,7 +31,7 @@ export function DashboardCard() {
       title: "Frequent Clients",
       value: 250,
       monthlyGoal: 65,
-      backgroundColor: "bg-teal-700",
+      backgroundColor: "main",
       icon: UsersIcon,
     },
     {
@@ -40,7 +40,7 @@ export function DashboardCard() {
       value: 45,
       monthlyGoal: 44,
 
-      backgroundColor: "bg-cyan-400",
+      backgroundColor: "secondary",
       icon: ClipboardDocumentListIcon,
     },
     {
@@ -49,7 +49,7 @@ export function DashboardCard() {
       value: 3,
       monthlyGoal: 10,
 
-      backgroundColor: "bg-emerald-200",
+      backgroundColor: "accent",
       icon: ArchiveBoxXMarkIcon,
     },
     {
@@ -58,7 +58,7 @@ export function DashboardCard() {
       value: 3,
       monthlyGoal: 10,
 
-      backgroundColor: "bg-lime-400",
+      backgroundColor: "accent",
       icon: BanknotesIcon,
     },
   ];
@@ -72,7 +72,7 @@ export function DashboardCard() {
             className="w-full lg:w-1/3 xl:w-1/4 mb-8 max-w-[20rem]">
             <Card
               variant="gradient"
-              className={`w-full lg:w-auto p-4 max-w-full shadow-2xl rounded-2xl ${item.backgroundColor} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
+              className={`w-full lg:w-auto p-4 max-w-full shadow-2xl rounded-2xl bg-${item.backgroundColor} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
               style={{ height: "200px" }}>
               <CardHeader
                 floated={false}

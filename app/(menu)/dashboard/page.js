@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <AppStateProvider>
       <div className="col-span-4 w-full h-full p-8 mt-20 ">
-        <h2 className="text-[#2D4635] font-bold text-xl">Dashboard</h2>
+        <h2 className="text-main font-bold text-xl">Dashboard</h2>
 
         <DashboardCard />
 
