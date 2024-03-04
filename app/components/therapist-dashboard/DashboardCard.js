@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardHeader,
@@ -10,58 +10,36 @@ import {
 } from "@material-tailwind/react";
 
 import {
-  UsersIcon,
-  ClipboardDocumentListIcon,
-  XCircleIcon,
-  ArchiveBoxXMarkIcon,
-  BanknotesIcon,
-} from "@heroicons/react/24/outline";
-
-import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { CardData } from "./CardData";
+import {
+  calculateSalesForCurrentMonth,
+  monthAppointmentsCount,
+} from "./CardData";
 
 export function DashboardCard() {
-  const cardData = [
-    {
-      //Percentage of clients that booked more than 3 appointments in the last 90 days
-      //(number of clients with 3 or more appts in the last 90 days/ total number of clients)*100
-      title: "Frequent Clients",
-      value: 250,
-      monthlyGoal: 65,
-      backgroundColor: "main",
-      icon: UsersIcon,
-    },
-    {
-      //Percentage of appointments booked until now compared to the monthly goal
-      title: "Total Appointments",
-      value: 45,
-      monthlyGoal: 44,
+  const cardData = CardData();
+  const [sales, setSales] = useState(0);
+  const [appointmentsCount, setAppointmentsCount] = useState(0);
 
-      backgroundColor: "secondary",
-      icon: ClipboardDocumentListIcon,
-    },
-    {
-      // (total cancelled appointments/total appointments)*100
-      title: "Cancellations",
-      value: 3,
-      monthlyGoal: 10,
+  useEffect(() => {
+    const fetchSales = async () => {
+      try {
+        const fetchedSales = await calculateSalesForCurrentMonth();
+        setSales(fetchedSales);
 
-      backgroundColor: "accent",
-      icon: ArchiveBoxXMarkIcon,
-    },
-    {
-      //percentage of sales made until now compared to last month
-      title: "Sales",
-      value: 3,
-      monthlyGoal: 10,
+        const fetchedAppointmentsCount = await monthAppointmentsCount();
+        setAppointmentsCount(fetchedAppointmentsCount);
+      } catch (error) {
+        console.error("Error fetching sales:", error);
+      }
+    };
 
-      backgroundColor: "accent",
-      icon: BanknotesIcon,
-    },
-  ];
+    fetchSales();
+  }, []);
 
   return (
     <>
@@ -101,7 +79,11 @@ export function DashboardCard() {
                   variant="h1"
                   color="black"
                   className=" gap-1 text-4xl m-5 font-bold text-white ">
-                  {item.value}
+                  {item.title === "Sales"
+                    ? sales
+                    : item.value === "Total Appointments"
+                    ? appointmentsCount
+                    : item.value}
                 </Typography>
               </CardBody>
               <CardFooter className="ml-8 p-0">

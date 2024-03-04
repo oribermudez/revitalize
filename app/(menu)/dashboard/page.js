@@ -2,10 +2,10 @@
 
 import { AppStateProvider } from "../../global-state/AppStateContext";
 import Charts from "@/app/components/Charts";
-import { DashboardCard } from "@/app/components/DashboardCard";
+import { DashboardCard } from "@/app/components/therapist-dashboard/DashboardCard";
 import RecentAppointments from "@/app/components/RecentAppointments";
-import PatientsVisitsChart from "@/app/components/PatientsVisitsChart";
-import ServicesChart from "@/app/components/ServicesChart";
+import PatientsVisitsChart from "@/app/components/therapist-dashboard/PatientsVisitsChart";
+import ServicesChart from "@/app/components/therapist-dashboard/ServicesChart";
 const Dashboard = () => {
   return (
     <AppStateProvider>
