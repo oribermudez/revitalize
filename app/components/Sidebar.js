@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
-    if (item === 'Dashboard' || item === 'Schedule' || item === 'Patients') {
+    if (item === 'Dashboard' || item === 'Schedule' || item === 'Patients' || item === 'Forms') {
     router.push(`/${item.toLowerCase()}`);
     };
     if (item === 'Profile') {
