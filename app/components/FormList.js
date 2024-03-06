@@ -36,7 +36,7 @@ export default function FormList() {
     if (response.ok) {
       setMessage(data.message); // Set the message
       handleCloseForm();
-      window.location.reload();
+      fetchData();
     } else {
       setMessage("An error occurred while submitting the signature.");
     }
