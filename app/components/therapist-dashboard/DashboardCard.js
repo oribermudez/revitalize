@@ -18,6 +18,7 @@ import { CardData } from "./CardData";
 import {
   calculateSalesForCurrentMonth,
   monthAppointmentsCount,
+  cancelledAppointmentsPercentage,
 } from "./CardData";
 
 export function DashboardCard() {
@@ -83,6 +84,8 @@ export function DashboardCard() {
                     ? sales
                     : item.value === "Total Appointments"
                     ? appointmentsCount
+                    : item.value === "Cancellations"
+                    ? cancelledAppointmentsPercentage
                     : item.value}
                 </Typography>
               </CardBody>

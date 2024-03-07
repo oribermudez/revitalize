@@ -17,6 +17,7 @@ const PatientsVisitsChart = () => {
     options: {
       width: "100%",
       chart: {
+        height: "400px",
         toolbar: {
           show: false,
         },
@@ -94,9 +95,9 @@ const PatientsVisitsChart = () => {
     },
   };
   return (
-    <div>
+    <div className="!min-h-96">
       <Chart
-        height={400}
+        height="100%"
         width="100%"
         options={data.options}
         series={data.series}

@@ -10,6 +10,9 @@ const ServicesChart = () => {
   const options = {
     width: "100%",
     chart: {
+      sparkline: {
+        enabled: true,
+      },
       height: "auto",
       type: "radialBar",
     },
@@ -29,7 +32,7 @@ const ServicesChart = () => {
     },
     legend: {
       show: true,
-      position: "bottom",
+      position: "top",
       containerMargin: {
         right: 0,
       },
@@ -46,7 +49,7 @@ const ServicesChart = () => {
         breakpoint: 1000,
         options: {
           chart: {
-            height: 400,
+            height: "400px",
             width: "100%",
           },
         },
@@ -55,14 +58,16 @@ const ServicesChart = () => {
   };
 
   return (
-    <Chart
-      height={400}
-      width="100%"
-      options={options}
-      series={options.series}
-      type="radialBar"
-      className="w-full rounded-md px-6 py-3 shadow-2xl"
-    />
+    <div className="">
+      <Chart
+        height="400px"
+        width="100%"
+        options={options}
+        series={options.series}
+        type="radialBar"
+        className="w-full rounded-md px-6 py-3 shadow-2xl !max-h-96"
+      />
+    </div>
   );
 };
 
