@@ -38,4 +38,4 @@ yarn-error.log*
 next-env.d.ts
 
 #database
-libs/mondoDB.js
+libs/mongoDB.js
