@@ -1,6 +1,7 @@
 "use client";
 
-import { AppStateProvider } from "../../global-state/AppStateContext";
+import { AppStateProvider } from "@/app/global-state/AppStateContext";
+
 import MyPatients from "@/app/components/MyPatients";
 
 const Patients = () => {
