@@ -1,54 +1,58 @@
-import React, { useEffect, useRef } from 'react';
-import { Card } from '@material-tailwind/react';
-import Chart from 'chart.js/auto';
+import React, { useEffect, useRef } from "react";
+import { Card } from "@material-tailwind/react";
+import Chart from "chart.js/auto";
 
 const Charts = () => {
   const lineChartRef = useRef(null);
   const doughnutChartRef = useRef(null);
   const barChartRef = useRef(null);
 
+  const mainColor = '#009B94';
+  const secondaryColor = '#A0ECD0';
+  const highlightColor = '#9DAAFF';
+
   useEffect(() => {
     const lineChartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      labels: ["January", "February", "March", "April", "May", "June"],
       datasets: [
         {
-          label: 'Appointments',
+          label: "Appointments",
           data: [10, 25, 27, 19, 24, 36],
-          borderColor: '#779790',
-          backgroundColor: '#779790',
+          borderColor: secondaryColor,
+          backgroundColor: mainColor,
         },
       ],
     };
 
     const doughnutChartData = {
-      labels: ['Female', 'Male'],
+      labels: ['Female', 'Male', 'Not Specified'],
       datasets: [
         {
-          data: [87, 45],
-          backgroundColor: ['#779790', '#2D4635'],
+          data: [87, 45, 20],
+          backgroundColor: [secondaryColor, mainColor, highlightColor],
         },
       ],
     };
 
     const barChartData = {
-      labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+      labels: ["January", "February", "March", "April", "May", "June"],
       datasets: [
         {
-          label: 'Cancellations',
+          label: "Cancellations",
           data: [5, 3, 2, 7, 4, 3],
-          backgroundColor: '#779790',
+          backgroundColor: highlightColor,
         },
       ],
     };
 
     // Chart configurations
     const lineChartConfig = {
-      type: 'line',
+      type: "line",
       data: lineChartData,
       options: {
         scales: {
           x: {
-            type: 'category',
+            type: "category",
           },
           y: {
             beginAtZero: true,
@@ -58,17 +62,17 @@ const Charts = () => {
     };
 
     const doughnutChartConfig = {
-      type: 'doughnut',
+      type: "doughnut",
       data: doughnutChartData,
     };
 
     const barChartConfig = {
-      type: 'bar',
+      type: "bar",
       data: barChartData,
       options: {
         scales: {
           x: {
-            type: 'category',
+            type: "category",
           },
           y: {
             beginAtZero: true,
@@ -79,7 +83,10 @@ const Charts = () => {
 
     const lineChart = new Chart(lineChartRef.current, lineChartConfig);
 
-    const doughnutChart = new Chart(doughnutChartRef.current, doughnutChartConfig);
+    const doughnutChart = new Chart(
+      doughnutChartRef.current,
+      doughnutChartConfig
+    );
 
     const barChart = new Chart(barChartRef.current, barChartConfig);
 
@@ -91,22 +98,22 @@ const Charts = () => {
   }, []);
 
   return (
-    <div className="py-6 flex flex-col md:flex-row gap-6 md:justify-between ">
+    <div className=" md:w-1/2 lg:w-1/3 xl:w-1/4 m-4 max-w-[20rem] py-6 flex flex-col  gap-6 md:justify-between ">
       <Card className="w-full rounded-md">
         <div className="p-4">
-          <h5 className="font-semibold text-lg text-gray-700 mb-4">Completed Appointments</h5>
+          <h5 className="font-semibold text-lg text-slate-700 mb-4">Completed Appointments</h5>
           <canvas ref={lineChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
       <Card className="w-full rounded-md">
         <div className="p-4">
-          <h5 className="font-semibold text-lg text-gray-700 mb-4">Cancellations</h5>
+          <h5 className="font-semibold text-lg text-slate-700 mb-4">Cancellations</h5>
           <canvas ref={barChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
       <Card className="w-full rounded-md">
         <div className="p-4">
-          <h5 className="font-semibold text-lg text-gray-700 mb-4">Total Patients: 132</h5>
+          <h5 className="font-semibold text-lg text-slate-700 mb-4">Total Patients: 132</h5>
           <canvas ref={doughnutChartRef} width="100" height="90"></canvas>
         </div>
       </Card>
