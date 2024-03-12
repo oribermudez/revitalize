@@ -14,7 +14,7 @@ const connectMongoDB = async () => {
 
     await client.connect();
 
-    const db = client.db();
+    const db = client.db(process.env.MONGO_DB_NAME);
 
     // Cache the client and db globally for reuse
     cachedClient = client;
