@@ -1,17 +1,17 @@
 "use client";
 
-import React from "react";
+import { React, useState, useEffect } from "react";
 
 import dynamic from "next/dynamic";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const PatientsVisitsChart = () => {
-  const data = {
+  const [chartData, setChartData] = useState({
     series: [
       {
-        name: "Number of Patients",
-        data: [10, 50, 30, 90, 40, 120, 100, 50, 80, 20, 60, 40],
+        name: "Number of Appointments",
+        data: [],
       },
     ],
     options: {
@@ -93,14 +93,52 @@ const PatientsVisitsChart = () => {
         },
       ],
     },
-  };
+  });
+
+  useEffect(() => {
+    fetchAppointments();
+  }, []);
+
+  async function fetchAppointments() {
+    try {
+      const currentDate = new Date();
+      const currentYear = currentDate.getFullYear();
+
+      const response = await fetch("/api/appointments");
+      if (!response.ok) {
+        throw new Error("Failed to fetch data");
+      }
+      const appointments = await response.json();
+
+      const filteredAppointments = appointments.filter((appointment) => {
+        const appointmentDate = new Date(appointment.startTime);
+        return appointmentDate.getFullYear() === currentYear;
+      });
+
+      const appointmentsByMonth = Array.from({ length: 12 }, () => 0); // Initialize an array to hold patient counts for each month
+
+      filteredAppointments.forEach((appointment) => {
+        const appointmentDate = new Date(appointment.startTime);
+        const month = appointmentDate.getMonth();
+        appointmentsByMonth[month]++;
+      });
+
+      setChartData((prevData) => ({
+        ...prevData,
+        series: [{ ...prevData.series[0], data: appointmentsByMonth }],
+      }));
+    } catch (error) {
+      console.error("Error fetching appointments:", error);
+    }
+  }
+
   return (
     <div className="!min-h-96">
       <Chart
         height="100%"
         width="100%"
-        options={data.options}
-        series={data.series}
+        options={chartData.options}
+        series={chartData.series}
         type="area"
         className="w-full rounded-md px-6 py-3 shadow-2xl"
       />
