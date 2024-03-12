@@ -16,11 +16,14 @@
     "jspdf": "^2.5.1",
     "mongodb": "^6.3.0",
     "next": "14.0.3",
+    "framer-motion": "^11.0.3",
     "react": "^18",
     "react-big-calendar": "^1.8.5",
     "react-datepicker": "^4.24.0",
     "react-dom": "^18",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "react-slick": "^0.30.0",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@types/node": "20.11.17",

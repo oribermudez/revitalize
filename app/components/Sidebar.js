@@ -31,7 +31,7 @@ const Sidebar = () => {
 
   const handleItemClick = (item) => {
     setActiveItem(item === activeItem ? null : item);
-    if (item === 'Dashboard' || item === 'Schedule' || item === 'Forms') {
+    if (item === 'Dashboard' || item === 'Schedule' || item === 'Forms' || item === 'Patients') {
     router.push(`/${item.toLowerCase()}`);
     };
   };
