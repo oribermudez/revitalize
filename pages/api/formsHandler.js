@@ -1,4 +1,4 @@
-import connectMongoDB from "../../libs/mongoDB";
+import connectMongoDB from "../../libs/mongodb";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
