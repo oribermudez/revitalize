@@ -6,6 +6,8 @@ import { DashboardCard } from "@/app/components/therapist-dashboard/DashboardCar
 import RecentAppointments from "@/app/components/RecentAppointments";
 import PatientsVisitsChart from "@/app/components/therapist-dashboard/PatientsVisitsChart";
 import ServicesChart from "@/app/components/therapist-dashboard/ServicesChart";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/client";
+
 const Dashboard = () => {
   return (
     <AppStateProvider>
@@ -32,4 +34,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default withPageAuthRequired(Dashboard);
