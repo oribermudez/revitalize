@@ -26,7 +26,7 @@ const ServicesChart = () => {
       },
       plotOptions: {
         radialBar: {
-          offsetY: 70,
+          offsetY: 25,
         },
       },
       legend: {
