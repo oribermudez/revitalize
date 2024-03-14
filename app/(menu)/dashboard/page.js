@@ -6,6 +6,7 @@ import { DashboardCard } from "@/app/components/therapist-dashboard/DashboardCar
 import RecentAppointments from "@/app/components/RecentAppointments";
 import PatientsVisitsChart from "@/app/components/therapist-dashboard/PatientsVisitsChart";
 import ServicesChart from "@/app/components/therapist-dashboard/ServicesChart";
+
 const Dashboard = () => {
   return (
     <AppStateProvider>
@@ -15,15 +16,13 @@ const Dashboard = () => {
         <DashboardCard />
 
         {/* Second column taking up 3 */}
-        <div className="flex flex-wrap gap-4">
-          <div className="w-full lg:flex lg:gap-4 ">
-            <div className="w-full lg:w-1/2 ">
-              <PatientsVisitsChart />
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-10">
+          <div className="w-full">
+            <PatientsVisitsChart />
+          </div>
 
-            <div className="w-full lg:w-1/2 ">
-              <ServicesChart />
-            </div>
+          <div className="w-full">
+            <ServicesChart />
           </div>
         </div>
         <RecentAppointments />
