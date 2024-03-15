@@ -1,17 +1,18 @@
-//SOAP notes page. Able to add a new Notes and see old soap notes from client.id passed from Patients
 "use client";
 
 import { Card } from "@material-tailwind/react";
 import React, { useState, useEffect } from "react";
-import MyModal from "./MyModal";
 
 const SoapNotes = ( {onClose, client }) => {
     const [formData, setFormData] = useState({
+        firstName: client.firstName,
+        lastName: client.lastName,
         date: "",
         subjective: "",
         objective: "",
         assessment: "",
         plan: "",
+        soapId: client.soapId,
     });
 
 
@@ -30,17 +31,19 @@ const SoapNotes = ( {onClose, client }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`/api/soap/?firstName=${client.firstName}`, {
-                method: "PUT",
+            const dataToSend = { firstName: client.firstName, lastName: client.lastName, soapId: client.soapId, ...formData };
+            const response = await fetch("/api/soap", {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(dataToSend),
             });
             if (response.ok) {
                 const data = await response.json();
                 alert(data.message);
-                closeModal();
+                closeModal(); 
+                fetchData();
             } else {
                 console.error("Error adding note: " + response.statusText);
             }
@@ -64,59 +67,75 @@ const SoapNotes = ( {onClose, client }) => {
         setIsModalOpen(false);
     };
     
-    useEffect(() => {
-        // Fetch data from the database and set it to allNotes
-        const fetchData = async () => {
-            try {
-                const response = await fetch(`/api/soap/?firstName=${client.firstName}`, {
-                    method: "GET",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                
-                });
-                console.log(client.firstName);
-                if (response.ok) {
-                    const data = await response.json();
-                    setAllNotes(data);
-                } else {
-                    console.error("Error fetching data: " + response.statusText);
-                }
-            } catch (error) {
-                console.error("Error fetching data: ", error);
-            }
-        };
 
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`/api/soap/?soapId=${client.soapId}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            console.log(client.soapId);
+            if (response.ok) {
+                const data = await response.json();
+                data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                setAllNotes(data);
+            } else {
+                console.error("Error fetching data: " + response.statusText);
+            }
+        } catch (error) {
+            console.error("Error fetching data: ", error);
+        }
+    };
+
+    useEffect(() => {
         fetchData();
-    }, [client.firstName]);
-    
+    },);
+
     return (
-        <Card className="bg-white rounded-md p-6 w-[500px] h-[700px] overflow-x-auto ">
+        <Card className="bg-white rounded-md p-6 w-[1300px] h-[900px] overflow-x-auto ">
         <div className="col-span-4 p-3 bg-white">
         <h2 className="text-black font-bold text-xl">
             SOAP Notes
         </h2>
-        <div className="flex">
+        <div className="flex border-b border-[#2D4635] pb-4">
             <button
             onClick={openModal}
-            className="bg-main text-white px-4 py-2 rounded-md mt-4"
+            className="bg-main text-white px-4 py-2 rounded-md mt-4 "
             >
             Add Note
             </button>
         </div>
         <div className="mt-10">
-            <h3 className="text-[#2D4635] font-bold text-lg">Previous Notes</h3>
-            <div className="mt-4">
-            {allNotes.map((note) => (
-                <div key={note._id} className="border-b border-[#2D4635] pb-4">
-                <p className="text-[#2D4635] font-bold">Date: {client.date}</p>
-                <p className="text-[#2D4635]">Subjective: {note.subjective}</p>
-                <p className="text-[#2D4635]">Objective: {note.objective}</p>
-                <p className="text-[#2D4635]">Assessment: {note.assessment}</p>
-                <p className="text-[#2D4635]">Plan: {note.plan}</p>
-                </div>
-            ))}
+                    {allNotes.length === 0 ? (
+                        <p className="mt-10 font-medium text-lightgrey font">No SOAP notes available</p>
+                    ) : (
+            <div className="">
+                {allNotes.map((note) => {
+                const formattedDate = new Date(note.date).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+
+                return (
+                    <div key={note._id} className="border-b border-[#2D4635] pb-10">
+                        <p className="text-[#2D4635] font-extrabold text-lg mt-10">Date: {formattedDate}</p>
+                        <p className="text-[#2D4635] font-bold pt-3 pb-1">Subjective</p>
+                        <p className="text-[#2D4635] border-2 border-lightgrey rounded-md px-4 py-2 pr-10" style={{ wordWrap: 'break-word' }}>{note.subjective}</p>
+                        <p className="text-[#2D4635] font-bold pt-3 pb-1">Objective</p>
+                        <p className="text-[#2D4635] border-2 border-lightgrey rounded-md px-4 py-2 pr-10" style={{ wordWrap: 'break-word' }}>{note.objective}</p>
+                        <p className="text-[#2D4635] font-bold pt-3 pb-1">Assessment</p>
+                        <p className="text-[#2D4635] border-2 border-lightgrey rounded-md px-4 py-2 pr-10" style={{ wordWrap: 'break-word' }}>{note.assessment}</p>
+                        <p className="text-[#2D4635] font-bold pt-3 pb-1">Plan</p>
+                        <p className="text-[#2D4635] border-2 border-lightgrey rounded-md px-4 py-2 pr-10" style={{ wordWrap: 'break-word' }}>{note.plan}</p>
+
+                    </div>
+                    );
+                })}
             </div>
+        )}
         </div>
         {isModalOpen && (
             <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -189,6 +208,7 @@ const SoapNotes = ( {onClose, client }) => {
         </div>
         </Card>
     );
-}
+};
+
 
 export default SoapNotes;

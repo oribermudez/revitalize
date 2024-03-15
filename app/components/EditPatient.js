@@ -151,7 +151,7 @@ const EditPatient = ({ onClose, client }) => {
           </Button>
           <Button
             onClick={() => handleDelete(client._id)}
-            className="w-full bg-red-500 text-sm mt-20"
+            className="w-full bg-danger text-sm mt-20"
           >
             Delete Patient
           </Button>

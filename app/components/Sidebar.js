@@ -57,8 +57,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Dashboard")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Dashboard")}>
             <ListItemPrefix>
@@ -69,8 +69,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Schedule")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Schedule")}>
             <ListItemPrefix>
@@ -81,8 +81,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Appointments")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Appointments")}>
             <ListItemPrefix>
@@ -93,8 +93,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Forms")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Forms")}>
             <ListItemPrefix>
@@ -105,8 +105,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Patients")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Patients")}>
             <ListItemPrefix>
@@ -117,8 +117,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Therapists")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Therapists")}>
             <ListItemPrefix>
@@ -129,8 +129,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Invoices")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Invoices")}>
             <ListItemPrefix>
@@ -141,8 +141,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Analytics")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Analytics")}>
             <ListItemPrefix>
@@ -155,8 +155,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Notifications")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Notifications")}>
             <ListItemPrefix>
@@ -167,8 +167,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Profile")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Profile")}>
             <ListItemPrefix>
@@ -179,8 +179,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Availability")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Availability")}>
             <ListItemPrefix>
@@ -191,8 +191,8 @@ const Sidebar = () => {
           <ListItem
             className={`rounded-md p-3 mb-1 ${
               isItemActive("Logout")
-                ? "text-white bg-[#77aba0]"
-                : "hover:text-white hover:bg-[#77aba0]"
+                ? "text-white bg-main"
+                : "hover:text-white hover:bg-main"
             }`}
             onClick={() => handleItemClick("Logout")}>
             <ListItemPrefix>

@@ -5,7 +5,7 @@ import { Card, CardBody, CardFooter, Button, Typography } from "@material-tailwi
 
 const NewPatient = ({ onClose }) => {
   const [formData, setFormData] = useState({
-    id: `${Math.floor(Math.random() * 1000)}`,
+    soapId: generateUniqueSoapId(),
     firstName: "",
     lastName: "",
     address: "",
@@ -41,6 +41,12 @@ const NewPatient = ({ onClose }) => {
 
     onClose();
   };
+
+  function generateUniqueSoapId() {
+    const timestamp = Date.now();
+    const random = Math.floor(Math.random() * 1000); 
+    return `${timestamp}-${random}`;
+  }
 
   return (
     <Card className='bg-white rounded-md p-6'>

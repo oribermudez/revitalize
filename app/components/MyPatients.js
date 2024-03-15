@@ -169,15 +169,15 @@ const MyPatients = () => {
         {/* Show all clients */}
         <tbody className="">
           {searchResults === null
-            ? allClients.map((client) => (
-              <tr key={client.id}>
+            ? allClients.map((client, index) => (
+              <tr key={index}>
                 <td className="p-5">{client.firstName}</td>
                 <td className="p-5">{client.lastName}</td>
                 <td className="p-5">{client.email}</td>
                 <td className="p-5">{client.phone}</td>
                 <td className="w-20">
                 <Button
-                    onClick={() => openSoapsModal(client.firstName)}
+                    onClick={() => openSoapsModal(client)}
                     className="font-xl p-2.5 rounded-md justify-center text-center bg-main text-white px-6 mr-5"
                   >
                     <ChatBubbleBottomCenterTextIcon
@@ -185,7 +185,7 @@ const MyPatients = () => {
                     />
                 </Button>
                   <MyModal
-                    isOpen={isSoapsModalOpen}
+                    isOpen={isSoapsModalOpen && selectedClient === client}
                     onClose={closeSoapsModal}
                   >
                     <SoapNotes
@@ -204,7 +204,7 @@ const MyPatients = () => {
                     />
                 </Button>
                 <MyModal
-                    isOpen={isEditPatientModalOpen}
+                    isOpen={isEditPatientModalOpen && selectedClient === client}
                     onClose={closeEditPatientModal}
                   >
                     <EditPatient
@@ -233,7 +233,7 @@ const MyPatients = () => {
                     />
                 </Button>
                   <MyModal
-                    isOpen={isSoapsModalOpen}
+                    isOpen={isSoapsModalOpen && selectedClient === client}
                     onClose={closeSoapsModal}
                   >
                     <SoapNotes
@@ -252,7 +252,7 @@ const MyPatients = () => {
                     />
                 </Button>
                 <MyModal
-                    isOpen={isEditPatientModalOpen}
+                    isOpen={isEditPatientModalOpen && selectedClient === client}
                     onClose={closeEditPatientModal}
                   >
                     <EditPatient

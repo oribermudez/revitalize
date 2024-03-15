@@ -56,7 +56,7 @@ const Login = () => {
               </div>
 
               <button
-                className="mt-12 bg-main text-white font-semibold px-4 py-2 rounded hover:bg-[#77aba0] w-full flex gap-4 justify-center items-center"
+                className="mt-12 bg-main text-white font-semibold px-4 py-2 rounded hover:bg-main w-full flex gap-4 justify-center items-center"
               >
                 Sign In
               </button>
