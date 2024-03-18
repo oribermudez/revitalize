@@ -1,4 +1,4 @@
-import connectMongoDB from "@/libs/mongodb";
+import connectMongoDB from "@/database/mongodb";
 import { ObjectId } from "mongodb";
 
 const { db } = await connectMongoDB();
