@@ -25,7 +25,8 @@ export const PUT = async (req) => {
   }
 }
 
-export const DELETE = async (req, res, clientId) => {
+export const DELETE = async (req, res) => {
+  const clientId = req.nextUrl.pathname.split("/").pop();
   try {
     await deleteClient(clientId);
     return NextResponse.json(
