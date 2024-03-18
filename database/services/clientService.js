@@ -35,8 +35,6 @@ export async function getClientById(clientId) {
 }
 
 export async function updateClient(clientId, updatedClientData) {
-  console.log('updatedClientData', updatedClientData);
-  console.log('clientId', clientId);
   try {
     const client = await Client.findByIdAndUpdate(clientId, updatedClientData, { new: true });
     return client;
@@ -49,7 +47,7 @@ export async function updateClient(clientId, updatedClientData) {
 export async function deleteClient(clientId) {
   try {
     await Client.findByIdAndDelete(clientId);
-    return true; // Or you can return some meaningful response
+    return true;
   } catch (error) {
     console.error('Error deleting client:', error);
     throw error;
