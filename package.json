@@ -19,7 +19,7 @@
     "jspdf": "^2.5.1",
     "mongodb": "^6.3.0",
     "mongoose": "^8.2.2",
-    "next": "^14.0.3",
+    "next": "13.5.3",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-big-calendar": "^1.8.5",
