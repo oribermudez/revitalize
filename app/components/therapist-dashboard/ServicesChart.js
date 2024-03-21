@@ -120,14 +120,6 @@ const ServicesChart = () => {
       const servicePercentages = series.map((service) => service.percentage);
       console.log("servicePercentages", servicePercentages);
 
-      // Filter services that have IDs matching the ones from appointments
-      // const matchingServices = services.filter((service) =>
-      //   servicesIds.includes(service._id)
-      // );
-
-      // Get the names of matching services
-      //const serviceNames = matchingServices.map((service) => service.name);
-
       setChartData((prevChartData) => ({
         ...prevChartData,
         series: servicePercentages,

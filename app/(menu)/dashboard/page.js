@@ -15,7 +15,6 @@ const Dashboard = () => {
 
         <DashboardCard />
 
-        {/* Second column taking up 3 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-10">
           <div className="w-full">
             <PatientsVisitsChart />

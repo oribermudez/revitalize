@@ -155,7 +155,7 @@ export function CardData({ onDataFetch }) {
       const cancelledAppointmentsCount = cancelledAppointments.length;
       return {
         count: cancelledAppointmentsCount,
-        percentage: cancelledPercentage,
+        percentage: Math.round(cancelledPercentage),
       };
     } catch (error) {
       console.error("Error fetching appointments:", error);
@@ -188,7 +188,7 @@ export function CardData({ onDataFetch }) {
 
       return {
         count: frequentClientsCount,
-        percentage: frequentClientsPercentage, // Round percentage to two decimal places
+        percentage: Math.round(frequentClientsPercentage), // Round percentage to two decimal places
       };
     } catch (error) {
       console.error("Error calculating frequent clients:", error);
