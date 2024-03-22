@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getClientById, updateClient, deleteClient } from '@/database/services/clientService';
+import { getClientById, updateClient, deleteClient } from '@/database/services/client';
 
 export const GET = async (req) => {
   const clientId = req.nextUrl.pathname.split("/").pop();

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllClients, createClient } from '@/database/services/clientService';
+import { getAllClients, createClient } from '@/database/services/client';
 
 export const GET = async () => {
   try {
