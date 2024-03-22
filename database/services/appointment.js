@@ -16,7 +16,10 @@ export async function createAppointment(appointmentData) {
 
 export async function getAllAppointments() {
   try {
-    const appointments = await Appointment.find();
+    const appointments = await Appointment.find()
+      .populate('service')
+      .populate('therapist')
+      .populate('client');
     return appointments;
   } catch (error) {
     console.error('Error fetching appointments:', error);
@@ -26,7 +29,10 @@ export async function getAllAppointments() {
 
 export async function getAppointmentById(appointmentId) {
   try {
-    const appointment = await Appointment.findById(appointmentId);
+    const appointment = await Appointment.findById(appointmentId)
+      .populate('service')
+      .populate('therapist')
+      .populate('client');
     return appointment;
   } catch (error) {
     console.error('Error fetching appointment by ID:', error);
@@ -36,7 +42,10 @@ export async function getAppointmentById(appointmentId) {
 
 export async function updateAppointment(appointmentId, updatedAppointmentData) {
   try {
-    const appointment = await Appointment.findByIdAndUpdate(appointmentId, updatedAppointmentData, { new: true });
+    const appointment = await Appointment.findByIdAndUpdate(appointmentId, updatedAppointmentData, { new: true })
+      .populate('service')
+      .populate('therapist')
+      .populate('client');
     return appointment;
   } catch (error) {
     console.error('Error updating appointment:', error);

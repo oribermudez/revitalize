@@ -16,7 +16,9 @@ export async function createTherapist(therapistData) {
 
 export async function getAllTherapists() {
   try {
-    const therapists = await Therapist.find();
+    const therapists = await Therapist.find()
+      .populate('availability')
+      .populate('services');
     return therapists;
   } catch (error) {
     console.error('Error fetching therapists:', error);
@@ -26,7 +28,9 @@ export async function getAllTherapists() {
 
 export async function getTherapistById(therapistId) {
   try {
-    const therapist = await Therapist.findById(therapistId);
+    const therapist = await Therapist.findById(therapistId)
+      .populate('availability')
+      .populate('services');
     return therapist;
   } catch (error) {
     console.error('Error fetching therapist by ID:', error);

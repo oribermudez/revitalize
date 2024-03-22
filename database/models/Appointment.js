@@ -1,4 +1,7 @@
 import mongoose from 'mongoose';
+import Service from './Service';
+import Therapist from './Therapist';
+import Client from './Client';
 
 const { Schema } = mongoose;
 
@@ -9,17 +12,17 @@ const appointmentSchema = new Schema({
   },
   service: {
     type: Schema.Types.ObjectId,
-    ref: 'Service',
+    ref: Service,
     required: true
   },
   therapist: {
     type: Schema.Types.ObjectId,
-    ref: 'Therapist',
+    ref: Therapist,
     required: true
   },
   client: {
     type: Schema.Types.ObjectId,
-    ref: 'Client',
+    ref: Client,
     required: true
   },
   status: {

@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import Availability from './Availability';
+import Service from './Service';
 
 const { Schema } = mongoose;
 
@@ -6,8 +8,6 @@ const therapistSchema = new Schema({
   name: String,
   email: String,
   phone: String,
-  location: String,
-  massagesTaken: Number,
   address: {
     street: { type: String },
     city: { type: String },
@@ -17,11 +17,11 @@ const therapistSchema = new Schema({
   sin: String,
   availability: {
     type: Schema.Types.ObjectId,
-    ref: 'Availability'
+    ref: Availability
   },
   services: [{
     type: Schema.Types.ObjectId,
-    ref: 'Service'
+    ref: Service
   }]
 });
 

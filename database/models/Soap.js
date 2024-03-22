@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const soapSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
-  soapId: String,
   date: Date,
   subjective: String,
   objective: String,
