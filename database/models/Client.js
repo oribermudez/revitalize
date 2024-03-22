@@ -4,8 +4,6 @@ const clientSchema = new mongoose.Schema({
   name: String,
   email: String,
   phone: String,
-  location: String,
-  massagesTaken: Number,
   address: {
     street: { type: String },
     city: { type: String },
