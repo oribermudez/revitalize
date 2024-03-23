@@ -1,19 +1,18 @@
-// Pass date string from DB to format into date and time
-// "2024-03-25T15:00"
-//    date: Mar 25, 2024
-//    time: 3:00 PM
+// Turns date into 2 parts: date and time
+// ex. dateString = "2024-03-25T15:00"
+//     returns: date: Mar 25, 2024
+//              time: 3:00 PM
 export function formatDate(dateString) {
   const date = new Date(dateString);
-  return {
-    date: date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }),
-    time: date.toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    }),
-  };
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  const formattedTime = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+  return `${formattedDate} at ${formattedTime}`;
 }

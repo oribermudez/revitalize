@@ -34,9 +34,9 @@ const Appointment = ({ title, appointments, onAppointmentClick }) => {
                   </div>
                   <div className="ml-4">
                     <span className="font-semibold">
-                      {appointment.therapist.name
+                      {appointment.client
                         ? `with ${appointment.therapist.name}`
-                        : "No therapist set"}
+                        : "No client set"}
                     </span>
                   </div>
                 </div>

@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { Card, Button } from "@material-tailwind/react";
-import { AppStateProvider } from "../../global-state/AppStateContext";
+import { AppStateProvider } from "@/app/global-state/AppStateContext";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
 import HighlightCards from "@/app/components/client-dashboard/HighlightCards";
-import Appointment from "@/app/components/client-appointments/Appointment";
+import Appointment from "@/app/components/therapist-appointments/Appointment";
 import MyCalendar from "@/app/components/MyCalendar";
-import NewAppointment from "@/app/components/client-appointments/NewAppointment";
-import AppointmentDetails from "@/app/components/client-appointments/AppointmentDetails";
+import NewAppointment from "@/app/components/therapist-appointments/NewAppointment";
+import AppointmentDetails from "@/app/components/therapist-appointments/AppointmentDetails";
 import MyModal from "@/app/components/MyModal";
 import { PlusIcon } from "@heroicons/react/24/outline";
 
@@ -33,16 +33,19 @@ const ClientAppointments = () => {
     setIsOpen(false);
   };
 
-  const clientId = "65ff54ea5c64ef8e0707f900"; //TODO: get client id from auth
+  const therapistId = "65fcee40d176ae6318341362";
 
   useEffect(() => {
     const fetchAppointments = async () => {
-      const response = await fetch(`/api/appointments?client=${clientId}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `/api/appointments?therapist=${therapistId}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       setAppointments(data);
     };
