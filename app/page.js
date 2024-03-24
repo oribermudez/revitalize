@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import Image from "next/image";
+import { Spinner, Alert } from "@material-tailwind/react";
 
 const Login = () => {
   const { user, error, isLoading } = useUser();
@@ -22,13 +23,52 @@ const Login = () => {
   };
 
   // TODO: make fancier loading/error
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
+  if (isLoading)
+    return (
+      <div>
+        <Spinner className="h-12 w-12" color="teal" />
+      </div>
+    );
+  if (error)
+    return (
+      <div>
+        <Alert color="red">Error: {error.message}</Alert>
+      </div>
+    );
 
   if (user) {
-    // If user is authenticated, redirect to dashboard
-    router.push("/dashboard");
-    return null;
+    console.log(user);
+    //const normalizedUser = normalizeUserData(user);
+    if (user.therapist) {
+      router.push("/dashboard");
+    } else {
+      router.push("/client/dashboard");
+    }
+
+    // const fetchData = async () => {
+    //   const response = await fetch("/api/users", {
+    //     method: "POST",
+    //     body: JSON.stringify({ user }),
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   });
+
+    //   if (response.ok) {
+    //     const data = await response.json();
+
+    //     if (data.isTherapist) {
+    //       router.push("/dashboard");
+    //     } else {
+    //       router.push("/client/dashboard");
+    //     }
+    //   } else {
+    //     console.error("Failed to store user data:", response.statusText);
+    //   }
+    // };
+    // if (!isLoading && !error && user) {
+    //   fetchData();
+    // }
   }
 
   return (

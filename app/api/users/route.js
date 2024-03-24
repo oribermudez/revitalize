@@ -1,46 +1,46 @@
 import connectMongoDB from "@/libs/mongodb";
-
-const { db } = await connectMongoDB();
+import { createClient } from "@/database/services/client";
+import { createTherapist } from "@/database/services/therapist";
 
 // POST function in api/users/route.js
-export async function POST(request) {
+export async function POST(req) {
   try {
-    console.log("POST request received");
-    const body = await request.json();
-    const { user } = body;
+    const { db } = await connectMongoDB();
+    console.log("User POST request received");
+    const userData = await req.json();
+    console.log(userData);
+    const { user } = userData;
 
-    let collection = "clients";
-
-    // Check user's role and set the appropriate collection
-    // if (user.role === "therapist") {
-    //   collection = "therapists";
-    // } else if (user.role === "client") {
-    //   collection = "clients";
-    // } else {
-    //   return new Response(JSON.stringify({ message: "Invalid user role" }), {
-    //     headers: { "Content-Type": "application/json" },
-    //     status: 400,
-    //   });
-    // }
-
-    // Check if user exists in the database
-    const dbUser = await db
-      .collection(collection)
-      .findOne({ user_id: user.sub });
-    if (!dbUser) {
-      // If user doesn't exist, add them to the database
-      await db.collection(collection).insertOne({ user_id: user.sub, ...user });
-    }
-
-    return new Response(
-      JSON.stringify({
-        message: `User data stored successfully in ${collection}.`,
-      }),
-      {
-        headers: { "Content-Type": "application/json" },
-        status: 201,
+    // add users to therapist in auth0 dashboard
+    // actions > library > custom > Set roles to a user template (login flow)
+    // SPECIAL_ROLE_USERS : 'therapist1@example.com, therapist2@example.com'
+    // SPECIAL_ROLE_NAME : 'therapist'
+    // SPECIAL_ROLE_VALUE : 'true'
+    if (user.therapist) {
+      try {
+        const newTherapist = await createTherapist(userData);
+        return NextResponse.json(newTherapist, {
+          status: 200,
+        });
+      } catch (error) {
+        return NextResponse.json(
+          { error: "Could not create new therapist" },
+          { status: 500 }
+        );
       }
-    );
+    } else {
+      try {
+        const newClient = await createClient(userData);
+        return NextResponse.json(newClient, {
+          status: 200,
+        });
+      } catch (error) {
+        return NextResponse.json(
+          { error: "Could not create new client" },
+          { status: 500 }
+        );
+      }
+    }
   } catch (error) {
     return new Response(
       JSON.stringify({ message: "Internal server error: " + error.message }),
