@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { MagnifyingGlassIcon, PlusIcon, PencilSquareIcon, ChatBubbleBottomCenterTextIcon  } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, PlusIcon, PencilSquareIcon, ChatBubbleBottomCenterTextIcon, UserIcon  } from "@heroicons/react/24/outline";
 import {
   Card,
   Typography,
@@ -10,8 +10,9 @@ import NewPatient from "./NewPatient";
 import MyModal from "./MyModal";
 import EditPatient from "./EditPatient";
 import SoapNotes from "./SoapNotes";
+import PatientProfile from "./PatientProfile";
 
-const TABLE_HEAD = ["First Name", "Last Name", "Email", "Phone Number", "SOAP", "Edit"];
+const TABLE_HEAD = ["First Name", "Last Name", "Email", "Phone Number", "SOAP", "Profile", "Edit"];
 
 
 const MyPatients = () => {
@@ -25,6 +26,8 @@ const MyPatients = () => {
   });
   const [searchResults, setSearchResults] = useState(null);
   const [selectedClient, setSelectedClient] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
+  const [selectedProfileClient, setSelectedProfileClient] = useState(null);
 
   const openNewPatientModal = () => {
     setNewPatientModalOpen(true);
@@ -52,6 +55,11 @@ const MyPatients = () => {
   const closeSoapsModal = () => {
     setSelectedClient(null);
     setSoapsModalOpen(false);
+  };
+
+  const redirectToProfile = (client) => {
+    setSelectedProfileClient(client);
+    setShowProfile(true);
   };
 
   useEffect(() => {
@@ -109,6 +117,10 @@ const MyPatients = () => {
   };
 
   return (
+    <>
+    {showProfile ? (
+      <PatientProfile client={selectedProfileClient} setShowProfile={setShowProfile} />
+    ) : (
     <Card className="h-full w-full mt-6 p-10">
 
 
@@ -175,13 +187,14 @@ const MyPatients = () => {
                 <td className="p-5">{client.lastName}</td>
                 <td className="p-5">{client.email}</td>
                 <td className="p-5">{client.phone}</td>
+                
                 <td className="w-20">
                 <Button
                     onClick={() => openSoapsModal(client)}
                     className="font-xl p-2.5 rounded-md justify-center text-center bg-main text-white px-6 mr-5"
                   >
                     <ChatBubbleBottomCenterTextIcon
-                      className="h-4 w-4  font-bold "
+                      className="h-5 w-5  font-bold "
                     />
                 </Button>
                   <MyModal
@@ -193,14 +206,28 @@ const MyPatients = () => {
                       client={selectedClient}
                     />
                   </MyModal>
+                </td> 
+                
+                {/* Redirect to patient profile */}
+                <td className="w-20 pl-1">
+                <Button
+                    onClick={() => redirectToProfile(client)}
+                    className="font-xl p-2.5 rounded-md justify-center text-center bg-main text-white px-6 mr-5"
+                  >
+                    <UserIcon
+                      className="h-5 w-5 "
+                    />
+                </Button>
                 </td>
+                
+                
                 <td className="w-20 pr-5">
                 <Button
                     onClick={() => openEditPatientModal(client)}
                     className="font-xl p-2.5 rounded-md justify-center text-center bg-main text-white px-6"
                   >
                     <PencilSquareIcon
-                      className="h-4 w-4  font-bold "
+                      className="h-5 w-5  font-bold "
                     />
                 </Button>
                 <MyModal
@@ -265,8 +292,11 @@ const MyPatients = () => {
               ))}
         </tbody>
       </table>
-    </Card>
+      </Card>
+      )}
+    </>
   );
 };
+
 
 export default MyPatients;
