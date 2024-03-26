@@ -6,20 +6,27 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Input,
+  Select,
+  Option,
   Typography,
 } from "@material-tailwind/react";
 import "react-datepicker/dist/react-datepicker.css";
+import { useAppState } from "@/app/global-state/AppStateContext";
 
 const NewAppointment = ({ onClose }) => {
+  const { dispatch } = useAppState();
+
   const [formData, setFormData] = useState({
     startTime: "",
     service: "",
-    therapist: "",
-    client: "65ff54ea5c64ef8e0707f900", //TODO: get client id from auth
+    therapist: "65fcee40d176ae6318341362", //TODO: get this from the logged in user
+    client: "",
     status: "pending",
   });
   const [services, setServices] = useState([]);
   const [therapists, setTherapists] = useState([]);
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
     fetch(`/api/services`)
@@ -30,6 +37,10 @@ const NewAppointment = ({ onClose }) => {
       .then((response) => response.json())
       .then((data) => setTherapists(data))
       .catch((error) => console.error("Error fetching therapists:", error));
+    fetch("/api/clients")
+      .then((response) => response.json())
+      .then((data) => setClients(data))
+      .catch((error) => console.error("Error fetching clients:", error));
   }, []);
 
   const handleChange = (e) => {
@@ -51,7 +62,6 @@ const NewAppointment = ({ onClose }) => {
         },
         body: JSON.stringify(formData),
       });
-      console.log("New appointment form submitted");
     } catch (error) {
       console.error("Error submitting new appointment form:", error);
     }
@@ -109,6 +119,25 @@ const NewAppointment = ({ onClose }) => {
               {therapists.map((therapist) => (
                 <option key={therapist._id} value={therapist._id}>
                   {therapist.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-6">
+            <select
+              id="client"
+              value={formData.client}
+              onChange={handleChange}
+              className="w-full p-2 border-b-2 focus:border-main outline-none"
+              required
+            >
+              <option value="" disabled className="!text-grey-300">
+                Select Client
+              </option>
+              {clients.map((client) => (
+                <option key={client._id} value={client._id}>
+                  {client.name}
                 </option>
               ))}
             </select>
