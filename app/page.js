@@ -37,38 +37,130 @@ const Login = () => {
     );
 
   if (user) {
-    console.log(user);
-    //const normalizedUser = normalizeUserData(user);
-    if (user.therapist) {
-      router.push("/dashboard");
-    } else {
-      router.push("/client/dashboard");
+    // if user auth'd with a user made account, create email field using name
+    if (!user.email) {
+      user.email = user.name;
     }
 
-    // const fetchData = async () => {
-    //   const response = await fetch("/api/users", {
-    //     method: "POST",
-    //     body: JSON.stringify({ user }),
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   });
+    if (user.therapist) {
+      const normalizeTherapist = () => {
+        return {
+          name: user.name,
+          email: user.email,
+          phone: "",
+          address: {
+            street: "",
+            city: "",
+            province: "",
+            postalCode: "",
+          },
+          sin: "",
+        };
+      };
 
-    //   if (response.ok) {
-    //     const data = await response.json();
+      const createTherapist = async (therapist) => {
+        const response = await fetch("/api/therapists", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(therapist),
+        });
+        if (!response.ok) {
+          console.error("Failed to store therapist data:", response.statusText);
+        }
+      };
 
-    //     if (data.isTherapist) {
-    //       router.push("/dashboard");
-    //     } else {
-    //       router.push("/client/dashboard");
-    //     }
-    //   } else {
-    //     console.error("Failed to store user data:", response.statusText);
-    //   }
-    // };
-    // if (!isLoading && !error && user) {
-    //   fetchData();
-    // }
+      const findTherapist = async () => {
+        const response = await fetch(`/api/therapists?email=${user.email}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.status === 200) {
+          const therapistData = await response.json();
+          if (therapistData) {
+            user._id = therapistData._id;
+          }
+        } else if (response.status === 404) {
+          createTherapist(normalizeTherapist());
+        } else {
+          console.error("Failed to fetch therapist data:", response.statusText);
+        }
+      };
+
+      findTherapist();
+      console.log(user);
+      //router.push("/dashboard");
+    } else {
+      const normalizeClient = () => {
+        return {
+          name: user.name,
+          email: user.email,
+          phone: "",
+          address: {
+            street: "",
+            city: "",
+            province: "",
+            postalCode: "",
+          },
+          insurance: {
+            provider: "",
+            policyNumber: "",
+            expiryDate: "",
+            isVerified: false,
+          },
+          payment: {
+            brand: "",
+            cardHolder: "",
+            expiryDate: "",
+            cardNumber: "",
+            cardType: "",
+            bank: "",
+            isVerified: false,
+          },
+        };
+      };
+
+      const createClient = async (client) => {
+        const response = await fetch("/api/clients", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(client),
+        });
+        if (!response.ok) {
+          console.error("Failed to store user data:", response.statusText);
+        }
+      };
+
+      const findClient = async () => {
+        const response = await fetch(`/api/clients?email=${user.email}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.status === 200) {
+          const clientData = await response.json();
+          if (clientData) {
+            user._id = clientData._id;
+          }
+        } else if (response.status === 404) {
+          createClient(normalizeClient());
+        } else {
+          console.error("Failed to fetch client data:", response.statusText);
+        }
+      };
+
+      findClient();
+      console.log(user);
+      router.push("/client/dashboard");
+    }
   }
 
   return (
