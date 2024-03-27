@@ -59,17 +59,13 @@ const AIChat = () => {
             } mb-2 `}>
             <div
               className={`rounded-full p-2 max-w-md mx-4 inline-block ${
-                message.role === "user"
-                  ? "bg-secondary text-white"
-                  : "bg-main text-white"
+                message.role === "user" ? " text-black" : " text-main"
               }`}>
-              {message.role === "user" ? "H" : "A"}
+              {message.role === "user" ? "You" : "Revit-AI-lize Bot"}
             </div>
             <div
               className={`max-w-md mx-4 my-2 inline-block ${
-                message.role === "user"
-                  ? "bg-secondary text-white"
-                  : "bg-main text-white"
+                message.role === "user" ? " text-black" : " text-main"
               }`}>
               {message.content}
             </div>
