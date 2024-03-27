@@ -17,8 +17,10 @@
     "chart.js": "^4.4.1",
     "dayjs": "^1.11.10",
     "framer-motion": "^11.0.3",
+    "jspdf": "^2.5.1",
     "mongodb": "^6.3.0",
-    "next": "^14.0.3",
+    "mongoose": "^8.2.2",
+    "next": "13.5.3",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
     "react-big-calendar": "^1.8.5",
@@ -26,9 +28,11 @@
     "react-datepicker": "^4.24.0",
     "react-dom": "^18",
     "react-slick": "^0.30.0",
+    "sharp": "^0.33.2",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
+    "@types/node": "20.11.17",
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
